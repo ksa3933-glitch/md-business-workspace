@@ -1,0 +1,2920 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="referrer" content="no-referrer"><title>MD Workspace · sales</title><style>[hidden]{display:none!important}</style></head><body><div style="padding:10px 18px;background:#fff4cf;color:#332b14;font:13px/1.7 system-ui;position:relative;z-index:2"><a href="index.html">프로젝트 홈</a> · 공개용 빈 양식 · 판매·재고 실적 미포함 · 일정은 이 브라우저에만 저장됩니다. 실제 업무·개인정보를 입력하거나 복원하지 마세요. 그룹 공유·기기 간 동기화는 제공하지 않습니다.</div><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>
+
+
+:root { --ux-navy:#101b35; --ux-blue:#4f6df5; --ux-tint:#f5f7fc; --ux-rail:232px; }
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:'DM Sans','IBM Plex Sans KR','Malgun Gothic',sans-serif!important;background:#f5f7fc!important;background-image:none!important;letter-spacing:-.018em}
+body.ux-layout{padding-left:var(--ux-rail)!important;min-height:100vh}
+.ux-sidebar{position:fixed;inset:0 auto 0 0;width:var(--ux-rail);background:#111d38;color:#ecf2ff;z-index:1000;display:flex;flex-direction:column;padding:27px 14px 19px;box-shadow:5px 0 30px rgba(21,38,73,.12)}
+.ux-logo{padding:0 12px 22px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:20px}
+.ux-logo-badge{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#6182ff,#8069f5);font-size:21px;margin-bottom:14px;box-shadow:0 8px 20px #425ae54a}
+.ux-logo strong{font-size:17px;display:block;font-weight:800;letter-spacing:-.055em}.ux-logo small{display:block;color:#91a2c7;font-size:11px;margin-top:4px;letter-spacing:.08em}
+.ux-nav-label{font-size:10px;font-weight:800;color:#8294bb;letter-spacing:.17em;margin:12px 12px 9px}
+.ux-nav{overflow-y:auto;flex:1;min-height:0}.ux-link{display:flex;align-items:center;gap:11px;padding:12px 13px;margin:2px 0;border-radius:11px;color:#acbad7;text-decoration:none;font-size:12.5px;font-weight:650;border:1px solid transparent;transition:.16s;cursor:pointer}.ux-link:hover{background:#273858;color:white}.ux-link.ux-active{background:#334a82;color:white;border-color:#5473b8;box-shadow:inset 3px 0 #90a9ff}.ux-link .ux-ico{font-size:17px;opacity:.85;width:20px;text-align:center}
+.ux-bottom{border-top:1px solid #ffffff19;padding:15px 8px 0}.ux-btn{font:inherit;font-size:12px;cursor:pointer;width:100%;border:1px solid #ffffff2c;background:#ffffff10;color:#d9e4ff;border-radius:10px;padding:10px 7px;margin-bottom:7px;text-align:center}.ux-btn:hover{background:#ffffff20}.ux-small{font-size:10px;color:#889bbf;text-align:center;margin-top:8px}
+.ux-mobile-toggle{display:none}.ux-mobile-shade{display:none}
+
+.topbar,.top{position:relative!important;top:auto!important;background:#f5f7fc!important;border:none!important;box-shadow:none!important}
+.topbar-inner,.top-inner{max-width:1500px!important;padding:30px 32px 18px!important;margin:0 auto!important}
+.topbar .brand-mark{background:#111d38!important;border-radius:13px!important;width:46px!important;height:46px!important}
+.header h1,.top h1{font-family:'DM Sans','IBM Plex Sans KR',sans-serif!important;font-size:clamp(24px,2.6vw,34px)!important;font-weight:800!important;letter-spacing:-.065em!important;color:#15213c!important}
+.topbar .badge{background:#e7ecff!important;color:#445ed7!important;border:1px solid #cfd9ff!important}
+.wrap,.shell{max-width:1500px!important;margin:0 auto!important;padding:8px 32px 80px!important}
+
+.filterbar,.screen-nav{border:1px solid #dde5f0!important;border-radius:18px!important;background:white!important;padding:17px 19px!important;box-shadow:0 5px 20px #283d6610!important;margin-bottom:25px!important}
+.filter-row{gap:14px!important}.field label,.field-label{font-weight:750!important;font-size:11px!important;color:#7c8ba4!important;letter-spacing:.04em!important}
+select,input[type=text],input[type=search],.model-search{background-color:#f6f8fd!important;color:#223250!important;border:1px solid #dbe4f1!important;border-radius:11px!important;min-height:40px!important;padding:8px 12px!important;font-family:'IBM Plex Sans KR',sans-serif!important;font-size:13px!important;box-shadow:none!important}
+select:focus,input:focus{outline:3px solid #6d8aff33!important;border-color:#6d8aff!important}
+button{font-family:'IBM Plex Sans KR',sans-serif!important}
+.segmented,.screen-nav .screen-tabs{background:#eef2fa!important;border-radius:12px!important;border:1px solid #dae2f0!important;padding:4px!important}
+.segmented button,.screen-tab,.tab,.mtab{transition:background .18s,box-shadow .18s,transform .18s!important;border-radius:9px!important}
+.segmented button.active,.screen-tab[aria-selected=true],.tab[aria-selected=true],.mtab[aria-selected=true],.screen-tab.active,.tab.active,.mtab.active{background:#4f6df5!important;color:white!important;box-shadow:0 4px 11px #4f6df538!important}
+
+.kpis,.kpi-grid{gap:16px!important;margin-bottom:24px!important}
+.kpi{position:relative;overflow:hidden;border:1px solid #dee6f2!important;border-radius:19px!important;background:#fff!important;padding:23px!important;box-shadow:0 6px 20px #2638570b!important;min-height:135px}
+.kpi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#4f6df5}
+.kpi:nth-child(2)::before{background:#18a68b}.kpi:nth-child(3)::before{background:#f7a747}.kpi:nth-child(4)::before{background:#9a73e6}
+.kpi .value,.kpi-value,.kpi .num{font-family:'DM Sans','IBM Plex Sans KR',sans-serif!important;font-size:clamp(25px,2.2vw,35px)!important;letter-spacing:-.06em!important;font-weight:800!important;color:#162446!important;font-variant-numeric:tabular-nums}
+.kpi .label,.kpi-label{font-size:12px!important;font-weight:700!important;color:#7d8ba5!important}
+
+.card{border:1px solid #dfe7f2!important;border-radius:20px!important;background:#fff!important;box-shadow:0 7px 28px #1e335b0a!important;padding:24px!important;margin-bottom:17px}
+.card-head{margin-bottom:20px!important}.card-head h2,.card-title{font-family:'DM Sans','IBM Plex Sans KR',sans-serif!important;font-size:17px!important;font-weight:800!important;letter-spacing:-.045em!important;color:#1c2a48!important}
+.card .note,.card-head .note{color:#8693a8!important;line-height:1.65!important}
+svg .grid-line{stroke:#edf1f7!important}svg .axis-line{stroke:#dfe7f2!important}svg text{font-family:'DM Sans','IBM Plex Sans KR',sans-serif!important}
+svg rect[fill]:not([fill=none]):hover{filter:brightness(1.08);opacity:.9}svg rect{transition:opacity .15s,filter .15s}svg path{stroke-linejoin:round;stroke-linecap:round}
+.legend-row{border-top:1px solid #edf1f6!important}
+.model-table,.model-table-wrap table,table{border-collapse:separate!important;border-spacing:0!important}table th{background:#f2f5fb!important;color:#677996!important;padding:13px 14px!important;font-size:11px!important;font-weight:800!important;position:sticky;top:0;z-index:1}table td{padding:12px 14px!important;border-bottom:1px solid #edf0f6!important}table tbody tr:hover td{background:#f2f6ff!important}
+.ux-info{display:flex;gap:9px;align-items:center;padding:11px 15px;border-radius:12px;margin-bottom:17px;color:#5d708e;font-size:12px;background:#eaf0ff;border:1px solid #d9e4fb}.ux-info b{color:#445fd2}.ux-info .ux-close{margin-left:auto;border:0;background:transparent;font-size:17px;color:#8795b0;cursor:pointer}
+body.ux-compact .card{padding:15px!important;margin-bottom:10px!important;border-radius:14px!important}body.ux-compact .kpi{padding:14px!important;min-height:96px!important}body.ux-compact .kpis{gap:9px!important}body.ux-compact .filterbar{padding:10px 14px!important;margin-bottom:10px!important}body.ux-compact .wrap,body.ux-compact .shell{padding-top:0!important}
+body.ux-focus .ux-sidebar{transform:translateX(-100%)}body.ux-focus{padding-left:0!important}body.ux-focus .wrap,body.ux-focus .shell{max-width:1500px!important}
+.ux-fab{position:fixed;right:22px;bottom:22px;border:0;color:white;background:#4f6df5;border-radius:40px;padding:12px 17px;box-shadow:0 10px 25px #354fb353;z-index:999;cursor:pointer;font-weight:750;font-size:12px}
+
+.side-rail{display:none!important}
+@media(max-width:1050px){:root{--ux-rail:198px}.ux-link{padding:11px 8px;font-size:11.5px}.wrap,.shell{padding:8px 19px 65px!important}.topbar-inner,.top-inner{padding:22px 19px 14px!important}}
+@media(max-width:760px){body.ux-layout{padding-left:0!important}.ux-sidebar{transform:translateX(-100%);transition:transform .2s}.ux-menu-open .ux-sidebar{transform:translateX(0)!important}.ux-menu-open .ux-mobile-shade{display:block;position:fixed;inset:0;background:#14213a80;z-index:999}.ux-mobile-toggle{display:block;position:fixed;left:13px;bottom:18px;z-index:998;border:0;background:#111d38;color:white;border-radius:100px;padding:13px 16px;font-size:13px;box-shadow:0 6px 22px #172a5570}.ux-fab{bottom:18px}.wrap,.shell{padding:8px 12px 85px!important}.topbar-inner,.top-inner{padding:19px 15px!important}.card{padding:16px!important}.kpis{gap:9px!important}.kpi{padding:14px!important}.ux-info{margin:0 12px 14px}.filterbar{padding:12px!important}}
+@media print{body.ux-layout{padding-left:0!important}.ux-sidebar,.ux-fab,.ux-mobile-toggle,.ux-info{display:none!important}}
+
+
+.ux-hide,body.ux-single .ux-hide{display:none!important}
+body.ux-single .grid2{display:block!important}
+body.ux-single .grid2>div:not(.card):not(.ux-hide){display:block!important}
+body.ux-single .card{margin-bottom:17px}
+body.ux-single .ux-info{margin-bottom:17px}
+
+.ux-native{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;opacity:0!important;pointer-events:none!important;padding:0!important;border:0!important;margin:0!important;overflow:hidden}
+.ux-combo{position:relative;display:inline-block;min-width:150px;max-width:100%}
+.ux-combo-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:40px;padding:8px 12px 8px 13px;border:1px solid #dbe4f1;border-radius:11px;background:#f6f8fd;color:#223250;font:600 13px/1.2 'IBM Plex Sans KR','DM Sans',sans-serif!important;cursor:pointer;text-align:left;transition:border-color .15s,box-shadow .15s,background .15s}
+.ux-combo-btn:hover{border-color:#b5c3e0;background:#fff}
+.ux-combo-btn:focus-visible,.ux-combo.ux-open .ux-combo-btn{outline:none;border-color:#6d8aff;box-shadow:0 0 0 3px #6d8aff33;background:#fff}
+.ux-combo-btn[disabled]{opacity:.55;cursor:not-allowed}
+.ux-combo-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ux-combo-ico{flex:none;width:16px;height:16px;color:#7b8cab}
+.ux-combo.ux-open .ux-combo-ico{color:#4f6df5}
+.ux-pop{position:fixed;z-index:1300;background:#fff;border:1px solid #d6e0f0;border-radius:14px;box-shadow:0 18px 48px -14px #1b2d5a4d,0 4px 14px #1b2d5a14;overflow:hidden;display:flex;flex-direction:column;font-family:'IBM Plex Sans KR','DM Sans',sans-serif}
+.ux-pop-search{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid #e8eef8;background:#fafcff}
+.ux-pop-search svg{flex:none;width:16px;height:16px;color:#4f6df5}
+.ux-pop-search input{flex:1;min-width:0;border:0!important;outline:none!important;background:transparent!important;box-shadow:none!important;min-height:0!important;padding:4px 0!important;font:500 13px 'IBM Plex Sans KR','DM Sans',sans-serif!important;color:#1c2a48!important}
+.ux-pop-search input::placeholder{color:#9aa8c2}
+.ux-pop-count{flex:none;font-size:11px;font-weight:700;color:#8a98b4;font-variant-numeric:tabular-nums}
+.ux-pop-list{overflow-y:auto;max-height:280px;padding:6px;margin:0;list-style:none}
+.ux-pop-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;font-weight:550;color:#2b3a58;cursor:pointer}
+.ux-pop-item.ux-hl{background:#eef2ff;color:#2f4bc4}
+.ux-pop-item.ux-sel{font-weight:750;color:#3550d6}
+.ux-pop-item .ux-chk{flex:none;width:14px;height:14px;color:#4f6df5;opacity:0}
+.ux-pop-item.ux-sel .ux-chk{opacity:1}
+.ux-pop-item mark{background:#ffe9a8;color:inherit;border-radius:3px;padding:0 1px}
+.ux-pop-empty{padding:18px 12px;text-align:center;font-size:12.5px;color:#8a98b4}
+.card-head .ux-combo{min-width:150px}
+@media(max-width:760px){.ux-combo{min-width:130px}}
+
+.ux-screen{display:block}
+.ux-screen-head{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+.ux-screen-head .ux-sh-ico{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:#e7ecff;color:#4358d4;font-size:20px;flex:none}
+.ux-screen-head h2{margin:0;font:800 21px/1.2 'DM Sans','IBM Plex Sans KR',sans-serif;letter-spacing:-.05em;color:#15213c}
+.ux-screen-head p{margin:3px 0 0;font-size:12.5px;color:#7d8ba5}
+.insights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:8px}
+.insight{background:#fff;border:1px solid #dee6f2;border-radius:18px;padding:19px 20px;box-shadow:0 6px 20px #2638570b;min-width:0}
+.insight .i-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#7d8ba5}
+.insight .i-label i{width:8px;height:8px;border-radius:3px;background:var(--c,#4f6df5);flex:none}
+.insight .i-value{margin:10px 0 6px;font:800 24px/1.2 'DM Sans','IBM Plex Sans KR',sans-serif;letter-spacing:-.05em;color:#162446;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.insight .i-value small{font-size:13px;font-weight:600;color:#6b7b97;margin-left:3px;letter-spacing:0}
+.insight .i-sub{font-size:11.5px;line-height:1.5;color:#7d8ba5}
+.insight .i-sub b{color:#3b4b6b;font-weight:700}
+.ux-section-title{margin:26px 0 12px;font:800 15px 'DM Sans','IBM Plex Sans KR',sans-serif;color:#1c2a48;letter-spacing:-.03em}
+.ux-table-wrap{overflow-x:auto;margin:0 -4px;padding:0 4px}
+table.ux-table{width:100%;min-width:760px;font-size:12.5px;font-variant-numeric:tabular-nums;color:#2b3a58}
+table.ux-table th{text-align:right;white-space:nowrap}
+table.ux-table td{text-align:right;white-space:nowrap}
+table.ux-table th:first-child,table.ux-table td:first-child,table.ux-table .t-left{text-align:left}
+table.ux-table th.t-left,table.ux-table td.t-left{text-align:left}
+table.ux-table td.t-name{white-space:normal;min-width:190px}
+table.ux-table td.t-name small{display:block;color:#8a98b4;font-size:11px;margin-top:2px}
+table.ux-table tfoot td{font-weight:800;background:#f6f8fd;border-top:2px solid #dfe7f2}
+table.ux-table .rank{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:8px;background:#eef2fa;color:#5b6b8a;font-weight:800;font-size:11.5px}
+table.ux-table tr:nth-child(-n+3) .rank{background:#e1e8ff;color:#3b53cf}
+table.ux-table .mk-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.ux-bar{display:flex;align-items:center;gap:9px;justify-content:flex-end}
+.ux-bar span{display:block;height:7px;border-radius:4px;background:#4f6df5;min-width:2px;opacity:.85}
+.ux-bar em{font-style:normal;min-width:44px;text-align:right}
+.ux-pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;background:#eef2fa;color:#5b6b8a}
+.ux-pill.live{background:#fff1d9;color:#a8650a}
+.ux-na{color:#a3aec4}
+.ref-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.ref-grid .card{margin-bottom:0}
+.ref-grid .card.wide{grid-column:1/-1}
+.ref-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+.ref-list li{position:relative;padding-left:16px;font-size:13px;line-height:1.7;color:#43536f}
+.ref-list li::before{content:'';position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:2px;background:#9bb0ff}
+.ref-list b{color:#1f2d4d}
+.ref-kv{display:grid;grid-template-columns:auto 1fr;gap:9px 18px;margin:0;font-size:13px}
+.ref-kv dt{color:#7d8ba5;font-weight:600}.ref-kv dd{margin:0;color:#1f2d4d;font-weight:650}
+.ref-chip{display:inline-block;padding:3px 9px;margin:2px 4px 2px 0;border-radius:8px;background:#f0f3fa;font-size:12px;color:#40506c}
+@media(max-width:1100px){.insights{grid-template-columns:repeat(2,minmax(0,1fr))}.ref-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.insights{grid-template-columns:1fr}.ux-screen-head h2{font-size:18px}}
+body.ux-single .grid2>div:not(.card):not(.ux-hide){display:block!important}
+body.ux-nofilter .filterbar{display:none}
+.ms{position:relative;display:inline-block;min-width:190px;max-width:100%}
+.ms.ms-open .ux-combo-btn{border-color:#6d8aff;box-shadow:0 0 0 3px #6d8aff33;background:#fff}
+.ms .ux-combo-btn{width:100%}
+.ms-pop{position:absolute;z-index:1300;top:calc(100% + 6px);left:0;width:320px;max-width:calc(100vw - 32px);background:#fff;border:1px solid #d6e0f0;border-radius:14px;box-shadow:0 18px 48px -14px #1b2d5a4d,0 4px 14px #1b2d5a14;padding:12px 14px 10px;font-family:'IBM Plex Sans KR','DM Sans',sans-serif}
+.ms-pop[hidden]{display:none}
+.ux-table tr.ux-row-sel td{background:#eef2ff}
+.ux-table tr.ux-row-sel td:first-child{box-shadow:inset 3px 0 0 #4f6df5}
+#singleTable td:first-child,#singleTable th:first-child{position:sticky;left:0;background:#fff;z-index:1;box-shadow:1px 0 0 #e3e9f5}#singleTable tr.ux-row-sel td:first-child{background:#eef2ff}#singleTable tfoot td:first-child{background:#f6f8fd}
+.ms-title{font-size:11.5px;font-weight:800;color:#7d8ba5;margin:2px 0 7px;letter-spacing:-.01em}
+.ms-title span{font-weight:600;color:#9aa8c2}
+.ms-presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ms-chip{border:1px solid #d8e2f2;background:#f6f8fd;color:#2b3a58;border-radius:999px;padding:6px 12px;font:650 12.5px 'IBM Plex Sans KR','DM Sans',sans-serif;cursor:pointer;transition:all .12s}
+.ms-chip:hover{border-color:#aebfe3;background:#fff}
+.ms-chip.on{background:#4f6df5;border-color:#4f6df5;color:#fff}
+.ms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.ms-m{border:1px solid #d8e2f2;background:#fff;color:#2b3a58;border-radius:10px;padding:8px 0;font:650 13px 'IBM Plex Sans KR','DM Sans',sans-serif;cursor:pointer;text-align:center;position:relative;transition:all .12s}
+.ms-m:hover{border-color:#aebfe3;background:#f6f8fd}
+.ms-m.on{background:#e8edff;border-color:#4f6df5;color:#2f4bc4;font-weight:800}
+.ms-m.live::after{content:"진행중";position:absolute;left:50%;transform:translateX(-50%);bottom:-1px;font-size:8.5px;font-weight:700;color:#e08a3c;line-height:1}
+.ms-m.live{padding-bottom:11px}
+.ms-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #e8eef8;padding-top:9px;font-size:11.5px;color:#7d8ba5}
+.ms-foot button{border:0;background:transparent;color:#4f6df5;font:700 12px 'IBM Plex Sans KR','DM Sans',sans-serif;cursor:pointer;padding:2px 0}
+@media(max-width:760px){.ms{min-width:150px}}
+</style><style id="mobile-opt">
+.fb-toggle{display:none}
+@media(max-width:640px){
+ .ux-info{display:none!important}
+ .wrap,.shell{padding:6px 10px 90px!important}
+ .topbar-inner,.top-inner{padding:14px 12px 10px!important}
+ .card{padding:13px!important;border-radius:14px!important}
+ .card-head h2,.card h2{font-size:16px!important}
+ .note{font-size:11.5px!important}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-bottom:14px!important}
+ .kpi{padding:12px 11px 12px 15px!important;min-height:0!important;border-radius:14px!important;min-width:0}
+ .kpi .value,.kpi-value,.kpi .num{font-size:21px!important;letter-spacing:-.04em!important}
+ .kpi .unit{font-size:11px!important}
+ .kpi .label,.kpi-label{font-size:11.5px!important}
+ .kpi-delta{font-size:11px!important}.kpi-note{font-size:10.5px!important}
+ .insights{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ .insight{padding:12px!important;border-radius:14px!important}
+ .insight .i-label{font-size:11px!important}.insight .i-value{font-size:20px!important}.insight .i-sub{font-size:11px!important;line-height:1.45}
+ .filterbar{padding:0!important;overflow:visible!important}
+ .filterbar .ms-pop{max-width:calc(100vw - 28px)}
+ .fb-toggle{display:flex;align-items:center;gap:8px;width:100%;border:0;background:transparent;padding:12px 14px;font:inherit;text-align:left;cursor:pointer;color:inherit}
+ .fb-toggle b{font-size:12px;color:#4f6df5;white-space:nowrap}
+ .fb-toggle span{flex:1;min-width:0;font-size:12px;color:#5d708e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .fb-toggle i{font-style:normal;font-size:12px;color:#7d8ba5;transition:transform .2s}
+ .filterbar:not(.fb-closed) .fb-toggle i{transform:rotate(180deg)}
+ .filterbar:not(.fb-closed) .filter-row{padding:0 14px 12px}
+ .filterbar.fb-closed .filter-row{display:none!important}
+ .filter-row{gap:10px!important}
+ .filter-row .field{min-width:0;flex:1 1 44%}
+ .filter-row .spacer{display:none}
+ .ux-screen-head{margin-bottom:8px!important}
+ table.ux-table{font-size:12px}
+ table.ux-table th,table.ux-table td{padding:8px 7px!important}
+ table.ux-table td:first-child,table.ux-table th:first-child{position:sticky;left:0;background:#fff;z-index:1;box-shadow:1px 0 0 #e3e9f5}
+ table.ux-table thead th:first-child{background:#f6f8fd}
+ table.ux-table tr.ux-row-sel td:first-child{background:#eef2ff}
+ table.ux-table tfoot td:first-child{background:#f6f8fd}
+ #screenSingle .filter-row{display:grid!important;grid-template-columns:1fr}
+ #screenSingle .field{width:100%}
+ #screenSingle .segmented{display:flex;width:100%;flex-wrap:nowrap}
+ #screenSingle .segmented button{flex:1;white-space:nowrap;padding:8px 2px;font-size:12px;min-width:0}
+ #singleMonths{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ #singleMonths button{padding:9px 0!important}
+ #screenSingle .callout{white-space:normal;line-height:1.4}
+ #singleTable{min-width:1500px!important}
+ .ux-mobile-toggle{padding:11px 14px;font-size:12.5px}
+ .ux-fab{font-size:12px;padding:10px 13px}
+ .legend-row{gap:10px;flex-wrap:wrap;font-size:11.5px}
+}
+</style>
+<style id="search-ui">
+.srch-row{display:flex;gap:8px;align-items:center}
+.srch-box{position:relative;flex:1;min-width:0}
+.srch-box svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:#7d8ba5;pointer-events:none}
+#srchInput{width:100%;box-sizing:border-box;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:13px 14px 13px 42px!important;font-weight:600;font-size:16px;line-height:1.2;font-family:inherit;outline:none}
+#srchInput:focus{border-color:#4f6df5;box-shadow:0 0 0 3px #4f6df52b}
+#srchClear{border:0;background:#eef2fa;color:#5d708e;border-radius:10px;padding:12px 14px;font-weight:700;font-size:13px;font-family:inherit;cursor:pointer;white-space:nowrap}
+.srch-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.srch-chips button{border:1px solid #d9e4fb;background:#f3f6ff;color:#3f5bd6;border-radius:999px;padding:6px 11px;font-weight:600;font-size:12px;font-family:inherit;cursor:pointer}
+.srch-sel{display:inline-flex;gap:6px;align-items:center;background:#eef2ff;color:#3f5bd6;border-radius:999px;padding:5px 6px 5px 11px;font-size:12px;font-weight:700;margin-top:8px}
+.srch-sel button{border:0;background:#4f6df5;color:#fff;border-radius:999px;width:20px;height:20px;line-height:20px;padding:0;cursor:pointer;font-size:12px}
+.srch-bar{display:inline-block;height:8px;border-radius:4px;background:#6d86f7;vertical-align:middle;margin-right:6px}
+#srchModelBody tr{cursor:pointer}
+#srchModelBody tr:hover td{background:#f6f8ff}
+.srch-more{margin-top:10px;border:1px solid #d9e4fb;background:#f3f6ff;color:#3f5bd6;border-radius:10px;padding:9px 14px;font-weight:700;font-size:12.5px;font-family:inherit;cursor:pointer}
+.srch-empty{padding:26px 8px;text-align:center;color:#7d8ba5;font-size:13.5px;line-height:1.7}
+@media(max-width:640px){#srchClear{padding:12px 11px}.srch-chips button{font-size:11.5px}}
+</style>
+<style id="price-ui">
+.pl{display:inline-flex;gap:5px;flex-wrap:wrap}
+.pl a{display:inline-block;border:1px solid #d9e4fb;background:#f3f6ff;color:#3f5bd6;border-radius:8px;padding:4px 8px;font-size:11.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+.pl a:hover{background:#4f6df5;color:#fff}
+.pr-flag{display:block;white-space:normal;overflow-wrap:anywhere;font-size:11px;color:#a8631a;line-height:1.35;margin-top:2px;font-weight:500}
+.pr-up{color:#d6334d;font-weight:700}.pr-down{color:#0e8f6e;font-weight:700}
+.pr-na{color:#9aa6bd}
+#prFind{display:flex;gap:8px;align-items:center}
+#prFindInput{flex:1;min-width:0;box-sizing:border-box;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 14px;font-weight:600;font-size:16px;font-family:inherit;outline:none}
+@media(max-width:640px){table#prTable.ux-table{min-width:0!important}table#prTable thead{display:none}table#prTable,table#prTable tbody,table#prTable tr,table#prTable td{display:block;width:100%;box-sizing:border-box}table#prTable tr{border:1px solid #e3e9f5;border-radius:12px;padding:10px 12px;margin-bottom:10px}table#prTable td{white-space:normal!important;padding:3px 0!important;border:0!important;text-align:left!important;position:static!important;box-shadow:none!important;background:transparent!important}table#prTable td[data-l]::before{content:attr(data-l);color:#7d8ba5;font-size:11px;font-weight:600;display:inline-block;min-width:92px}table#prTable td.t-left[data-l='판매처'],table#prTable td[data-l='쇼핑몰 검색']{display:block}}
+#prFindInput:focus{border-color:#4f6df5;box-shadow:0 0 0 3px #4f6df52b}
+</style>
+
+
+<style>.back-to-todo{display:inline-flex;align-items:center;gap:4px;width:fit-content;margin:0 0 5px;padding:4px 10px;border-radius:999px;background:#eef2ff;color:#4268eb;font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;text-decoration:none;transition:background .15s,color .15s}.back-to-todo:hover{background:#4268eb;color:#fff}@media (prefers-color-scheme:dark){.back-to-todo{background:#263452;color:#96adff}}.back-to-todo:focus-visible{outline:3px solid #7b99ef;outline-offset:3px}@media print{.back-to-todo{display:none}}</style>
+<style>
+  
+
+  :root {
+    color-scheme: light;
+    --bg: #f2f4f2;
+    --surface: #ffffff;
+    --surface-2: #f5f8f6;
+    --ink: #14161c;
+    --ink-soft: #565b68;
+    --ink-muted: #8b8f99;
+    --line: #e3e6e3;
+    --line-strong: #cfd4cf;
+    --accent: #018941;
+    --accent-ink: #ffffff;
+    --accent-soft: #e3f6ea;
+    --accent-soft-ink: #046c34;
+    --good: #0e8f86;
+    --bad: #d03b3b;
+    --cat-1: #2a78d6;
+    --cat-2: #eb6834;
+    --cat-3: #1baf7a;
+    --cat-4: #eda100;
+    --cat-5: #e87ba4;
+    --cat-6: #4a3aa7;
+    --brand-lg: #c8102e;
+    --brand-lg-light: #eeaab5;
+    --brand-samsung: #1428a0;
+    --shadow: 0 1px 2px rgba(20,22,28,0.04), 0 8px 24px -12px rgba(20,22,28,0.12);
+    --shadow-hover: 0 2px 4px rgba(20,22,28,0.06), 0 14px 28px -14px rgba(20,22,28,0.22);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0c0d11;
+      --surface: #16181f;
+      --surface-2: #1c1f27;
+      --ink: #f4f5f7;
+      --ink-soft: #b3b7c2;
+      --ink-muted: #7c808b;
+      --line: #282b35;
+      --line-strong: #363946;
+      --accent: #1fcb6e;
+      --accent-ink: #0c0d11;
+      --accent-soft: rgba(31,203,110,0.16);
+      --accent-soft-ink: #6fe6a8;
+      --good: #2dd4c4;
+      --bad: #e66767;
+      --cat-1: #3987e5;
+      --cat-2: #d95926;
+      --cat-3: #199e70;
+      --cat-4: #c98500;
+      --cat-5: #d55181;
+      --cat-6: #9085e9;
+      --brand-lg: #e6495e;
+      --brand-lg-light: #8a4048;
+      --brand-samsung: #5b7ce8;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.6);
+      --shadow-hover: 0 2px 6px rgba(0,0,0,0.4), 0 18px 40px -18px rgba(0,0,0,0.75);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0c0d11;
+    --surface: #16181f;
+    --surface-2: #1c1f27;
+    --ink: #f4f5f7;
+    --ink-soft: #b3b7c2;
+    --ink-muted: #7c808b;
+    --line: #282b35;
+    --line-strong: #363946;
+    --accent: #1fcb6e;
+    --accent-ink: #0c0d11;
+    --accent-soft: rgba(31,203,110,0.16);
+    --accent-soft-ink: #6fe6a8;
+    --good: #2dd4c4;
+    --bad: #e66767;
+    --cat-1: #3987e5;
+    --cat-2: #d95926;
+    --cat-3: #199e70;
+    --cat-4: #c98500;
+    --cat-5: #d55181;
+    --cat-6: #9085e9;
+    --brand-lg: #e6495e;
+    --brand-lg-light: #8a4048;
+    --brand-samsung: #5b7ce8;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.6);
+    --shadow-hover: 0 2px 6px rgba(0,0,0,0.4), 0 18px 40px -18px rgba(0,0,0,0.75);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .topbar-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  .brand-mark {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand-mark svg { width: 20px; height: 20px; display: block; }
+  .brand-text { min-width: 0; }
+  .header h1 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .header .sub {
+    margin: 2px 0 0;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-soft);
+    color: var(--accent-soft-ink);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  
+  .filterbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-row + .filter-row {
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .field label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+  .field-narrow select { min-width: 84px; }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface-2) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="%238b8f99" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
+    border: 1px solid var(--line-strong);
+    border-radius: 9px;
+    padding: 8px 32px 8px 12px;
+    min-width: 150px;
+    cursor: pointer;
+  }
+  select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .spacer { flex: 1; }
+
+  .segmented {
+    display: flex;
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-radius: 9px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .segmented button {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .segmented button.active {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 16px;
+    box-shadow: var(--shadow);
+    transition: box-shadow .15s ease, transform .15s ease;
+  }
+  .kpi:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  .kpi-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .kpi-icon svg { width: 17px; height: 17px; }
+  .kpi .label { font-size: 12px; color: var(--ink-muted); font-weight: 600; margin-bottom: 8px; }
+  .kpi .value { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+  .kpi .value .unit { font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-left: 2px; }
+  .kpi-delta { font-size: 11.5px; font-weight: 700; margin-top: 6px; }
+  .kpi-note {
+    font-size: 11px; font-weight: 600; color: var(--ink-soft);
+    margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .kpi-note-info {
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--surface-2); color: var(--ink-muted);
+    font-size: 9px; font-weight: 700; cursor: help; flex: none;
+  }
+  .kpi-note-tip {
+    display: none;
+    position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%);
+    width: 220px; padding: 8px 10px; border-radius: 8px;
+    background: var(--ink); color: var(--bg);
+    font-size: 11px; font-weight: 500; line-height: 1.4; text-align: left;
+    box-shadow: var(--shadow-hover); z-index: 5;
+  }
+  .kpi-note-info:hover .kpi-note-tip, .kpi-note-info:focus .kpi-note-tip { display: block; }
+
+  
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    transition: box-shadow .15s ease, transform .15s ease;
+    padding: 20px 20px 16px;
+    box-shadow: var(--shadow);
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .card-head h2 { margin: 0; font-size: 15px; font-weight: 800; }
+  .card-head .note { font-size: 12px; color: var(--ink-muted); }
+
+  .callout {
+    font-size: 12.5px;
+    color: var(--accent-soft-ink);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .callout.delta-up { background: var(--surface-2); color: var(--good); }
+  .callout.delta-down { background: var(--surface-2); color: var(--bad); }
+
+  svg text { font-family: "Noto Sans KR", system-ui, sans-serif; fill: var(--ink-soft); }
+  .axis-line { stroke: var(--line-strong); stroke-width: 1; }
+  .grid-line { stroke: var(--line); stroke-width: 1; }
+  .tick-label { font-size: 11px; fill: var(--ink-muted); }
+  .value-label { font-size: 11.5px; font-weight: 700; fill: var(--ink); }
+  .bar-name-label { font-size: 12px; font-weight: 600; fill: var(--ink); }
+  .bar-sub-label { font-size: 10.5px; fill: var(--ink-muted); }
+  text.delta-up { fill: var(--good); }
+  text.delta-down { fill: var(--bad); }
+  .delta-up { color: var(--good); }
+  .delta-down { color: var(--bad); }
+
+  .hover-target { cursor: pointer; }
+  .crosshair { stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; pointer-events: none; }
+
+  .tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 10px;
+    padding: 10px 12px;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translate(-9999px, -9999px);
+    transition: opacity 0.08s ease;
+    z-index: 50;
+    max-width: 240px;
+  }
+  .tooltip .t-title { font-weight: 800; margin-bottom: 4px; }
+  .tooltip .t-row { display: flex; justify-content: space-between; gap: 14px; opacity: 0.92; }
+  .tooltip .t-row + .t-row { margin-top: 1px; }
+
+  .legend-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); font-weight: 600; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+  .legend-dot.dashed { border-radius: 0; height: 2px; width: 14px; }
+
+  .footnote {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 18px;
+    line-height: 1.7;
+  }
+  .footnote strong { color: var(--ink-soft); }
+
+  @media (max-width: 860px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .grid2 { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="11" width="4" height="7" rx="1" fill="#ffffff"/>
+          <rect x="8" y="7" width="4" height="11" rx="1" fill="#ffffff"/>
+          <rect x="14" y="3" width="4" height="15" rx="1" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="brand-text header">
+        <a class="back-to-todo" href="#" target="_blank" rel="noopener" title="일정관리 대시보드로 돌아가기">← 일정관리</a>
+        <h1>판매 대시보드</h1>
+        <p class="sub" id="subtitle">데이터 기간 불러오는 중…</p>
+      </div>
+    </div>
+    <span class="badge">시연용 분류</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="filterbar fb-closed" id="filterBar"><button type="button" class="fb-toggle" id="fbToggle" aria-expanded="false"><b>필터</b><span id="fbSummary">전체 기간</span><i>▾</i></button>
+    <div class="filter-row">
+      <div class="field field-narrow">
+        <label for="monthBtn">월 (여러 개 선택)</label>
+        <div class="ms" id="monthMs">
+          <button type="button" class="ux-combo-btn" id="monthBtn" aria-haspopup="true" aria-expanded="false"><span class="ux-combo-label" id="monthBtnText">전체 기간</span><svg class="ux-combo-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="ms-pop" id="monthPop" hidden>
+            <div class="ms-title">빠른 선택</div>
+            <div class="ms-presets" id="monthPresets"></div>
+            <div class="ms-title">월 직접 선택 <span>(여러 개 체크)</span></div>
+            <div class="ms-grid" id="monthGrid"></div>
+            <div class="ms-foot"><span id="monthHint"></span><button type="button" id="monthClear">전체 기간으로</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="makerSelect">메이커</label>
+        <select id="makerSelect"></select>
+      </div>
+      <div class="spacer"></div>
+      <div class="field">
+        <label>기준 지표</label>
+        <div class="segmented" id="metricToggle">
+          <button data-metric="q" class="active">판매수량</button>
+          <button data-metric="rev">매출액</button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-row">
+      <div class="field">
+        <label for="hqSelect">영업본부</label>
+        <select id="hqSelect"></select>
+      </div>
+      <div class="field">
+        <label for="branchSelect">지부</label>
+        <select id="branchSelect"></select>
+      </div>
+      <div class="field">
+        <label for="storeSelect">지점</label>
+        <select id="storeSelect"></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="ux-screen-head" id="uxScreenHead"></div>
+  <div class="ux-screen" id="screenOverview"><div class="kpis" id="kpiRow"></div><div id="insightWrap"></div></div>
+
+  <div class="ux-screen" id="screenTrend">
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2 id="trendTitle">일별 판매 추이</h2>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="callout" id="yoyCallout" style="display:none;"></span>
+        <span class="callout" id="peakCallout"></span>
+      </div>
+    </div>
+    <div id="trendChart"></div>
+    <div class="legend-row" id="trendLegend" style="display:none;"></div>
+  </div>
+
+  <div class="card" id="weekdayCard" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>요일별 판매 패턴</h2>
+        <div class="note" id="weekdayNote"></div>
+      </div>
+    </div>
+    <div id="weekdayChart"></div>
+    <div class="legend-row">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-1);"></span>평일</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-2);"></span>주말(토·일)</span>
+    </div>
+  </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>모델별 판매 순위</h2>
+          <div class="note" id="modelNote"></div>
+        </div>
+        <select id="modelItemSelect"></select>
+      </div>
+      <div id="modelChart"></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;"><div class="ux-screen" id="screenMix" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>품목별 비중</h2>
+            <div class="note">선택한 본부·지부·지점 기준 · 전년동기 대비 증감 표시</div>
+          </div>
+        </div>
+        <div id="itemChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>브랜드별 비중 (MS)</h2>
+            <div class="note" id="brandNote">엘지구독은 엘지에 합산 · 구독 비중 별도 표시</div>
+          </div>
+          <select id="brandViewSelect"></select>
+        </div>
+        <div id="brandChart"></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2 id="segTabTitle">SEG 등급별 삼성·엘지 비교</h2>
+        <div class="note" id="segTabNote"></div>
+      </div>
+      <div class="segmented" id="segTabToggle">
+        <button data-tab="seg" class="active">SEG별</button>
+        <button data-tab="spec">스펙별</button>
+        <button data-tab="inch">인치별</button>
+      </div>
+    </div>
+    <div id="segCompareChart"></div>
+    <div id="specPanel" style="display:none;">
+      <div class="filter-row" style="margin-bottom:12px;">
+        <div class="field field-narrow">
+          <label for="specTierSelect">대분류</label>
+          <select id="specTierSelect"></select>
+        </div>
+        <div class="field field-narrow">
+          <label for="specNameSelect">중분류</label>
+          <select id="specNameSelect"></select>
+        </div>
+      </div>
+      <div id="specChart"></div>
+      <div id="specModelChart" style="display:none;"></div>
+      <div class="note" id="specModelNote" style="display:none; margin-top:8px;"></div>
+    </div>
+    <div id="inchChart" style="display:none;"></div>
+    <div class="legend-row" id="segTierLegend">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-1);"></span>Premium(OLED·M.RGB·Neo QLED)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-2);"></span>Middle(Mini LED·QLED·QNED·NanoCell)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-3);"></span>Entry(UHD·FHD·HD, 울트라·Crystal UHD 포함)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-4);"></span>라이프스타일(스탠바이미·더 무빙스타일)</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-head">
+      <div>
+        <h2>엘지구독 구성 추이</h2>
+        <div class="note" id="subTrendNote">엘지구독 전용(메이커·월 필터와 무관, 본부·지부·지점 필터만 반영) · 라이프스타일 vs LED 월별 비중</div>
+      </div>
+    </div>
+    <div id="subTrendChart"></div>
+    <div class="legend-row" id="subTrendLegend">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-4);"></span>라이프스타일(스탠바이미·더 무빙스타일)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cat-1);"></span>LED(올레드·QNED·나노셀 등 일반 TV)</span>
+    </div>
+  </div>
+
+  
+  <div class="ux-screen" id="screenOrg">
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>지부별 실적</h2><div class="note">상단 필터 반영 · 전년동기 대비는 참고용 집계(지점×품목×월) 기준 · 구독은 매출 0원으로 집계되어 별도 수량으로 표시</div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table"><thead><tr><th class="t-left">지부</th><th class="t-left">영업본부</th><th>판매수량</th><th>비중</th><th>전년동기 대비</th><th>매출액(백만)</th><th>전년동기 대비</th><th>매출이익(백만)</th><th>이익률</th><th>구독 수량</th></tr></thead><tbody id="orgBranchBody"></tbody><tfoot id="orgBranchFoot"></tfoot></table></div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>지점 TOP 15</h2><div class="note" id="orgStoreNote"></div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table"><thead><tr><th class="t-left">순위</th><th class="t-left">지점</th><th class="t-left">지부</th><th>판매수량</th><th>비중</th><th>전년동기 대비</th><th>매출액(백만)</th><th>전년동기 대비</th><th>매출이익(백만)</th><th>구독 수량</th></tr></thead><tbody id="orgStoreBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <div class="ux-screen" id="screenMonth">
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>월별 실적 요약</h2><div class="note">상단 <b>월 필터와 무관하게 전체 월</b>을 보여주고 선택한 월은 강조하며 본부·지부·지점·메이커 필터는 반영됩니다 · 일평균은 데이터가 있는 일수 기준</div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table"><thead><tr><th class="t-left">월</th><th>판매수량</th><th>전년동기</th><th>증감</th><th>매출액(백만)</th><th>전년동기(백만)</th><th>증감</th><th>매출이익(백만)</th><th>이익률</th><th>평균단가(백만)</th><th>일평균(개)</th><th>구독 수량</th></tr></thead><tbody id="monthBody"></tbody><tfoot id="monthFoot"></tfoot></table></div>
+    </div>
+  </div>
+
+  <div class="ux-screen" id="screenPrice">
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>다른 모델 최저가 찾기</h2><div class="note">모델번호나 상품명을 입력하고 쇼핑몰 버튼을 누르면 해당 쇼핑몰의 <b>낮은 가격순</b> 검색 결과가 새 창으로 열립니다.</div></div></div>
+      <div id="prFind"><input id="prFindInput" type="search" placeholder="예) KQ65QF6AAFXKR, 인켈 SD32HK" autocomplete="off" enterkeyhint="search"></div>
+      <div class="pl" id="prFindLinks" style="margin-top:10px"></div>
+    </div>
+    <div id="prTiles"></div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>주요 모델 온라인 최저가 vs 우리 평균 판매가</h2><div class="note" id="prNote"></div></div>
+        <div class="segmented" id="prPeriod"><button data-v="r3" class="active">최근 3개월</button><button data-v="flt">상단 필터 기간</button></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" id="prTable" style="min-width:860px"><thead><tr><th class="t-left">모델</th><th>판매수량</th><th>우리 평균 판매가</th><th>온라인 최저가</th><th>차이</th><th class="t-left">판매처</th><th class="t-left">쇼핑몰 검색</th></tr></thead><tbody id="prBody"></tbody></table></div>
+      <p class="note" style="margin:10px 0 0;line-height:1.7;">· 우리 평균 판매가 = 실매출액 ÷ 수량 × 1.1(부가세 포함, 구독 판매 제외)이며 행사·할인·번들이 섞인 평균입니다. · 온라인 최저가는 <b>조회일 기준 스냅샷</b>(일반 신품, 배송비 제외, 카드·멤버십 조건부·렌탈·리퍼·직구 제외)이라 지금 가격과 다를 수 있으니 판매처 링크로 다시 확인하세요. · 차이 = (우리 평균 판매가 − 온라인 최저가) ÷ 온라인 최저가, 빨강은 우리가 더 비쌈. · 가격비교 사이트에 없는 모델은 '미확인'입니다. 가격 갱신은 Claude에게 "최저가 갱신해줘"라고 요청하세요.</p>
+    </div>
+  </div>
+
+  <div class="ux-screen" id="screenSearch">
+    <div class="card" style="margin-bottom:14px;">
+      <div class="srch-row">
+        <div class="srch-box"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg><input id="srchInput" type="search" placeholder="예) 85인치 TV, SD32HK, 삼성 OLED, 사운드바" autocomplete="off" enterkeyhint="search"></div>
+        <button type="button" id="srchClear">지우기</button>
+      </div>
+      <div class="srch-chips" id="srchChips"><button type="button">85인치 TV</button><button type="button">65인치 삼성</button><button type="button">75인치 엘지</button><button type="button">사운드바</button><button type="button">빔프로젝터</button><button type="button">구독</button></div>
+      <p class="note" style="margin:10px 0 0;line-height:1.6;">모델번호·상품명·메이커·품목·인치로 찾습니다. 띄어쓰기로 여러 조건을 함께 걸 수 있고(예: <b>85인치 TV</b>), 위쪽 필터(월·메이커·지부·지점)가 그대로 적용됩니다. <span id="srchScope"></span></p>
+    </div>
+    <div id="srchTiles"></div>
+    <div class="card" id="srchModelCard" style="margin-bottom:14px;display:none;">
+      <div class="card-head"><div><h2>모델별 판매</h2><div class="note" id="srchModelNote">행을 누르면 그 모델만 지점별로 볼 수 있습니다</div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" style="min-width:760px"><thead><tr><th class="t-left">모델</th><th class="t-left">상품명</th><th class="t-left">메이커</th><th>인치</th><th>판매수량</th><th>매출(백만)</th><th class="t-left">온라인 최저가</th></tr></thead><tbody id="srchModelBody"></tbody></table></div>
+    </div>
+    <div class="card" id="srchStoreCard" style="margin-bottom:14px;display:none;">
+      <div class="card-head"><div><h2 id="srchStoreTitle">지점별 판매</h2><div class="note" id="srchStoreNote"></div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" style="min-width:420px"><thead><tr><th class="t-left">지점</th><th class="t-left">지부</th><th>판매수량</th><th class="t-left">비중</th><th>매출(백만)</th></tr></thead><tbody id="srchStoreBody"></tbody></table></div>
+      <button type="button" class="srch-more" id="srchStoreMore" style="display:none;"></button>
+    </div>
+    <div class="ref-grid" id="srchGrid" style="display:none;">
+      <div class="card">
+        <div class="card-head"><div><h2>월별 판매</h2></div></div>
+        <div class="ux-table-wrap"><table class="ux-table" style="min-width:0"><thead><tr><th class="t-left">월</th><th>판매수량</th><th>매출(백만)</th></tr></thead><tbody id="srchMonthBody"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>판매 내역</h2><div class="note" id="srchDetailNote">일자·지점·모델별 (최신순) · 음수는 취소·정정</div></div></div>
+        <div class="ux-table-wrap" style="max-height:420px;overflow-y:auto"><table class="ux-table" style="min-width:0"><thead><tr><th class="t-left">일자</th><th class="t-left">지점</th><th class="t-left">모델</th><th>수량</th></tr></thead><tbody id="srchDetailBody"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ux-screen" id="screenSingle">
+    <div class="card" style="margin-bottom:14px;">
+      <div class="filter-row">
+        <div class="field"><label>기간</label>
+          <div class="segmented" id="singlePreset"><button data-v="all" class="active">1~10월 합계</button><button data-v="r3">최근 3개월</button><button data-v="h1">1~6월</button><button data-v="h2">7~10월</button></div></div>
+        <div class="field"><label>월 선택 (여러 개 가능)</label>
+          <div class="segmented" id="singleMonths"><button data-v="202601" class="active">1월</button><button data-v="202602" class="active">2월</button><button data-v="202603" class="active">3월</button><button data-v="202604" class="active">4월</button><button data-v="202605" class="active">5월</button><button data-v="202606" class="active">6월</button><button data-v="202607" class="active">7월</button><button data-v="202608" class="active">8월</button><button data-v="202609" class="active">9월</button><button data-v="202610" class="active">10월</button></div></div>
+        <div class="field"><label>지표</label>
+          <div class="segmented" id="singleMetric"><button data-v="q" class="active">판매 대수</button><button data-v="rev">실매출액</button></div></div>
+        <div class="spacer"></div>
+        <span class="callout">판매 분류 화면 · 원본 실적 미포함 — 상단 필터와 무관</span>
+      </div>
+      <p class="note" style="margin:14px 0 0;line-height:1.7;"><b>단품</b> = 전표 안에 TV만 있거나 TV + TV 악세서리만 있는 경우 · <b>다품목</b> = 냉장고·세탁기·에어컨·사운드바 등 TV·악세서리 외 품목(다른 담당자 상품 포함)이 같은 전표에 있는 경우. <span id="singleCancelNote"></span></p>
+    </div>
+    <div id="singleTiles"></div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2 id="singleChartTitle">인치별 단품·다품목</h2><div class="note">인치구간: 30형대(27·32) · 40형대(43·48) · 50형대 · 55 · 65 · 75 · 77 · 83 · 85형 · 기타(100형 이상)</div></div></div>
+      <div id="singleInchChart"></div>
+      <div class="legend-row"><span class="legend-item"><span class="legend-dot" style="background:var(--cat-1);"></span>단품</span><span class="legend-item"><span class="legend-dot" style="background:var(--cat-2);"></span>다품목(타 품목 동반)</span></div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>단품 판매 베스트 모델 TOP 5</h2><div class="note" id="singleTopNote">인치 무관 · 단품 판매 대수 기준</div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" style="min-width:640px"><thead><tr><th class="t-left">순위·모델</th><th class="t-left">상품명</th><th>인치</th><th>단품 대수</th><th>단품 실매출(백만)</th><th>같은 모델 다품목</th><th>단품 비중</th><th>1~10월 단품</th></tr></thead><tbody id="singleTopBody"></tbody></table></div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2>월별 단품 · 다품목</h2><div class="note">선택한 월은 강조됩니다 · 실매출은 백만원</div></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" style="min-width:760px"><thead><tr><th class="t-left">월</th><th>단품</th><th>다품목</th><th>취소·정정</th><th>순판매 합계</th><th>단품 비중</th><th>단품 실매출</th><th>다품목 실매출</th></tr></thead><tbody id="singleMonthBody"></tbody><tfoot id="singleMonthFoot"></tfoot></table></div>
+
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-head"><div><h2 id="singleTableTitle">인치 × 월 상세</h2></div></div>
+      <div class="ux-table-wrap"><table class="ux-table" id="singleTable" style="min-width:1900px;"></table></div>
+    </div>
+    <div class="ref-grid">
+      <div class="card">
+        <div class="card-head"><div><h2>다품목 전표의 동반 품목</h2><div class="note" id="singleCompNote"></div></div></div>
+        <div class="ux-table-wrap"><table class="ux-table" style="min-width:0"><thead><tr><th class="t-left">품목</th><th>전표 수</th><th>수량</th><th>실매출(백만)</th></tr></thead><tbody id="singleCompBody"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>지부별 단품 비중</h2><div class="note" id="singleBranchNote">판매 대수 기준</div></div></div>
+        <div class="ux-table-wrap"><table class="ux-table" style="min-width:0"><thead><tr><th class="t-left">지부</th><th>단품</th><th>다품목</th><th>단품 비중</th></tr></thead><tbody id="singleBranchBody"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ux-screen" id="screenRef">
+    <div class="ref-grid">
+      <div class="card">
+        <div class="card-head"><div><h2>데이터 범위</h2></div></div>
+        <dl class="ref-kv">
+          <dt>데이터 기간</dt><dd id="refRange">-</dd>
+          <dt>최종 판매일</dt><dd id="refLast">-</dd>
+          <dt>집계 행 수</dt><dd id="refRows">-</dd>
+          <dt>담당 코드</dt><dd>시연용 분류</dd>
+          <dt>포함 품목</dt><dd>LED TV · 사운드바 · 빔프로젝터</dd>
+          <dt>제외 품목</dt><dd>TV자재 등 그 외 품목코드</dd>
+        </dl>
+        <p class="note" style="margin-top:14px;line-height:1.7;">기간 문구는 매 갱신 시 실제 반영된 날짜 범위로 자동 계산됩니다. 같은 형식의 파일을 다시 주시면 이 대시보드를 그대로 갱신할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>집계 기준</h2></div></div>
+        <ul class="ref-list">
+          <li><b>금액 단위</b> · 원화 기호 없이 백만원 단위로 표시합니다(100백만원 미만은 소수 1자리).</li>
+          <li>구독 판매는 별도 지표로 표시할 수 있습니다. 공개본에는 원본 데이터가 없습니다.</li>
+          <li><b>취소·정정</b> · 판매 정정·취소로 생기는 음수 수량 행은 별도 제외 없이 합계에서 차감됩니다(개요의 '취소·정정 차감' 참고).</li>
+          <li>조직 및 지점 정보는 공개본에 포함하지 않습니다.</li>
+          <li><b>브랜드 색상</b> · 엘지전자=빨강, 엘지구독=옅은 빨강, 삼성전자=파랑으로 고정하고 나머지 메이커는 판매수량 순으로 팔레트를 한 번만 배정합니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>전년동기 비교 기준</h2></div></div>
+        <ul class="ref-list">
+          <li>전년동기 비교는 동일 조건의 월별 집계를 사용하는 구조입니다.</li>
+          <li>담당자 구분이 없어 같은 지점의 다른 담당자 판매가 소량 포함될 수 있습니다.</li>
+          <li>모델 번호가 없어 <b>모델별 순위에는 반영하지 못했고</b>, 엘지구독 여부도 구분할 수 없어 엘지전자에 합산됩니다.</li>
+          <li>매출이익은 이익 산정 기준이 달라 전년동기 비교에서 제외했습니다.</li>
+          <li>진행 중인 달은 <b>판매 마감일과 같은 날짜의 DB 스냅샷</b>(누계)으로 비교하는 근사치입니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>SEG · 스펙 분류 기준</h2></div></div>
+        <ul class="ref-list">
+          <li><b>Premium</b> · OLED, M.RGB, Neo QLED</li>
+          <li><b>Middle</b> · Mini LED, QLED, QNED, NanoCell</li>
+          <li><b>Entry</b> · UHD, FHD, HD (울트라·Crystal UHD는 UHD 패널이라 UHD에 합산)</li>
+          <li><b>라이프스타일</b> · 스탠바이미(엘지), 더 무빙스타일(삼성)</li>
+          <li>화면 크기와 패널 등급을 분류합니다. 실제 모델별 예외 보정표는 제거했습니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>화면별 안내</h2></div></div>
+        <ul class="ref-list">
+          <li><b>개요</b> · 핵심 지표(KPI)와 인사이트. 필터와 판매수량/매출액 토글이 모든 화면에 반영됩니다.</li>
+          <li><b>일별 판매 추이</b> · 월을 한 달만 고르면 일별, 여러 달(최근 3개월 등)이나 전체 기간이면 월별(전년동기 점선)로 자동 전환. 요일별 패턴 포함.</li>
+          <li><b>모델별 판매 순위</b> · TOP 5 카드와 TOP 20 상세표. 카드 안 품목 선택으로 TV·사운드바·빔프로젝터 구분.</li>
+          <li><b>품목 · 브랜드 비중</b> · 품목별 비중과 브랜드별 비중(MS)을 한 화면에서 봅니다. 브랜드는 기본이 삼성·엘지(구독 합산)·기타, 카드 안 선택으로 기타 브랜드 상세.</li>
+          <li><b>SEG·스펙 비교</b> · SEG별 / 스펙별 / 인치별 탭. 스펙별은 대분류→중분류 선택 시 베스트 5 모델.</li>
+          <li><b>LG 구독 추이</b> · 월·메이커 필터와 무관하게 전체 기간(본부·지부·지점 필터만 반영).</li>
+          <li><b>단품 판매 현황</b> · 단품과 다른 품목 동반 판매를 구분하는 화면입니다. 공개본 데이터는 비어 있습니다.</li>
+          <li><b>지부·지점 실적 / 월별 요약</b> · 표 형태로 전년동기 대비를 함께 확인. 월별 요약은 전체 월을 보여주되, 상단 월 필터에서 고른 달은 강조하고 '선택 기간 합계' 행을 더합니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>공개용 분류 안내</h2></div></div><p>회사별 코드와 실제 모델별 보정표를 제거했습니다.</p><div id="refBranches"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script id="sales-data" type="application/json">{"dates": [], "models": [], "makers": [], "stores": {}, "items": {}, "branches": {}, "rows": [], "py": {"months": [], "rows": []}}</script>
+<script>
+(function () {
+  "use strict";
+
+  var COMPACT = JSON.parse(document.getElementById("sales-data").textContent);
+  var HQ_MAP = {};
+  function bnFor(b) { return COMPACT.branches[b] || (b + "(미확인)"); }
+  function hqFor(bn) { return HQ_MAP[bn] || "기타판매"; }
+
+  var RAW = COMPACT.rows.map(function (row) {
+    var b = row[0], s = row[1], dIdx = row[2], ic = row[3], mIdx = row[4],
+        q = row[5], rev = row[6], profit = row[7], mkIdx = row[8], sub = row[9],
+        subRev = row[10] || 0;
+    var bn = bnFor(b);
+    var modelEntry = COMPACT.models[mIdx];
+    var d = COMPACT.dates[dIdx];
+    return {
+      b: b, bn: bn, hq: hqFor(bn),
+      s: s, sn: COMPACT.stores[s] || (s + "(미확인)"),
+      d: d, ym: d.slice(0, 7),
+      ic: ic, iname: COMPACT.items[ic] || (ic + "(미확인)"),
+      m: modelEntry[0], pn: modelEntry[1],
+      q: q, rev: rev, profit: profit, subRev: subRev,
+      mk: COMPACT.makers[mkIdx],
+      sub: sub
+    };
+  });
+
+  var PY_RAW = (COMPACT.py ? COMPACT.py.rows : []).map(function (row) {
+    var b = row[0], s = row[1], mIdx = row[2], ic = row[3], mk = row[4], q = row[5], rev = row[6], profit = row[7];
+    var bn = bnFor(b);
+    return {
+      b: b, bn: bn, hq: hqFor(bn),
+      s: s, sn: COMPACT.stores[s] || (s + "(미확인)"),
+      ym: COMPACT.py.months[mIdx],
+      ic: ic, iname: COMPACT.items[ic] || (ic + "(미확인)"),
+      mk: mk, q: q, rev: rev, profit: profit
+    };
+  });
+
+  var fmtInt = new Intl.NumberFormat("ko-KR");
+  var fmtM1 = new Intl.NumberFormat("ko-KR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+  var fmtM = function (n) {
+    var m = n / 1000000;
+    return (Math.abs(m) < 100) ? fmtM1.format(m) : fmtInt.format(Math.round(m));
+  };
+
+  var state = { hq: "전체", branch: "전체", store: "전체", metric: "q", month: "전체", months: [], maker: "전체", modelItem: "전체", brandView: "대분류", segTab: "seg", specTier: "전체", specName: "전체" };
+
+  var hqOrder = ["전체", "시연본부 A", "시연본부 B", "시연본부 C", "기타판매"];
+  var branchOrderByHq = {};
+
+  var hqSet = {};
+  RAW.forEach(function (r) { hqSet[r.hq] = true; });
+  var hqs = hqOrder.filter(function (h) { return h === "전체" || hqSet[h]; });
+
+  var hqSelect = document.getElementById("hqSelect");
+  hqs.forEach(function (h) {
+    var opt = document.createElement("option");
+    opt.value = h; opt.textContent = h;
+    hqSelect.appendChild(opt);
+  });
+
+  var months = Array.from(new Set(RAW.map(function (r) { return r.ym; }))).sort();
+  var monthLabel = function (ym) { return (ym ? parseInt(ym.slice(5, 7), 10) + "월" : "데이터 없음"); };
+  var inMonths = function (ym) { return state.months.length === 0 || state.months.indexOf(ym) >= 0; };
+  var lastYm = months[months.length - 1];
+  var periodLabel = function () {
+    var sel = state.months;
+    if (!sel.length) return "전체 기간";
+    if (sel.length === 1) return monthLabel(sel[0]);
+    var idx = sel.map(function (m) { return months.indexOf(m); });
+    var contiguous = idx.every(function (v, i) { return i === 0 || v === idx[i - 1] + 1; });
+    if (contiguous) return monthLabel(sel[0]) + "~" + monthLabel(sel[sel.length - 1]) + " (" + sel.length + "개월)";
+    return sel.length <= 4 ? sel.map(monthLabel).join("·") : sel.length + "개월 선택";
+  };
+  (function () {
+    var btn = document.getElementById("monthBtn"), pop = document.getElementById("monthPop"), box = document.getElementById("monthMs");
+    var presetsEl = document.getElementById("monthPresets"), gridEl = document.getElementById("monthGrid");
+    var presets = [{ k: "all", t: "전체 기간", m: [] }];
+    var last = function (n) { return months.slice(-n); };
+    if (months.length > 3) presets.push({ k: "r3", t: "최근 3개월", m: last(3) });
+    if (months.length > 6) presets.push({ k: "r6", t: "최근 6개월", m: last(6) });
+    [1, 2, 3, 4].forEach(function (q) {
+      var qm = months.filter(function (ym) { var mm = +ym.slice(5, 7); return Math.ceil(mm / 3) === q; });
+      if (qm.length === 3 || (qm.length && qm[qm.length - 1] === lastYm)) presets.push({ k: "q" + q, t: q + "분기", m: qm });
+    });
+    var same = function (a, b) { return a.length === b.length && a.every(function (v, i) { return v === b[i]; }); };
+    function paint() {
+      document.getElementById("monthBtnText").textContent = periodLabel();
+      presetsEl.innerHTML = presets.map(function (p) {
+        return '<button type="button" class="ms-chip' + (same(state.months, p.m) ? " on" : "") + '" data-p="' + p.k + '">' + p.t + "</button>";
+      }).join("");
+      gridEl.innerHTML = months.map(function (ym) {
+        var on = state.months.length === 0 ? false : state.months.indexOf(ym) >= 0;
+        return '<button type="button" class="ms-m' + (on ? " on" : "") + (ym === lastYm ? " live" : "") + '" data-m="' + ym + '" aria-pressed="' + on + '">' + monthLabel(ym) + "</button>";
+      }).join("");
+      document.getElementById("monthHint").textContent = state.months.length ? state.months.length + "개월 선택됨" : "월을 누르면 선택됩니다";
+    }
+    function apply(list) {
+      list = months.filter(function (m) { return list.indexOf(m) >= 0; });
+      state.months = list.length === months.length ? [] : list;
+      paint(); render();
+    }
+    presetsEl.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var p = presets.filter(function (x) { return x.k === b.getAttribute("data-p"); })[0];
+      apply(p.m.slice());
+    });
+    gridEl.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var ym = b.getAttribute("data-m"), cur = state.months.slice();
+      var i = cur.indexOf(ym);
+      if (i >= 0) cur.splice(i, 1); else cur.push(ym);
+      apply(cur);
+    });
+    document.getElementById("monthClear").addEventListener("click", function () { apply([]); });
+    function setOpen(o) { pop.hidden = !o; box.classList.toggle("ms-open", o); btn.setAttribute("aria-expanded", o ? "true" : "false"); }
+    btn.addEventListener("click", function () { setOpen(pop.hidden); });
+    document.addEventListener("click", function (e) { if (!box.contains(e.target) && document.body.contains(e.target)) setOpen(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+    paint();
+  })();
+
+  var CAT_COLORS = ["var(--cat-1)", "var(--cat-2)", "var(--cat-3)", "var(--cat-4)", "var(--cat-5)", "var(--cat-6)"];
+
+
+  var SPEC_TIER = {
+    "OLED": "프리미엄", "M.RGB": "프리미엄", "Neo QLED": "프리미엄",
+    "Mini LED": "미들", "QLED": "미들", "QNED": "미들", "NanoCell": "미들",
+    "UHD": "엔트리", "FHD": "엔트리", "HD": "엔트리",
+    "StandbyMe": "라이프스타일", "QHD": "라이프스타일"
+  };
+
+  var SPEC_DISPLAY_ORDER = ["OLED", "M.RGB", "Neo QLED", "Mini LED", "QLED", "QNED", "NanoCell", "UHD", "FHD", "HD", "StandbyMe", "QHD"];
+  var TIER_ORDER = ["프리미엄", "미들", "엔트리", "라이프스타일"];
+  var TIER_COLOR = { "프리미엄": "var(--cat-1)", "미들": "var(--cat-2)", "엔트리": "var(--cat-3)", "라이프스타일": "var(--cat-4)" };
+
+  var TIER_LABEL = { "프리미엄": "Premium", "미들": "Middle", "엔트리": "Entry", "라이프스타일": "라이프스타일" };
+  function specsForTier(tier) {
+    if (tier === "전체") return SPEC_DISPLAY_ORDER;
+    return SPEC_DISPLAY_ORDER.filter(function (s) { return SPEC_TIER[s] === tier; });
+  }
+
+  var makerSelect = document.getElementById("makerSelect");
+  var makerQty = {};
+  RAW.forEach(function (r) { makerQty[r.mk] = (makerQty[r.mk] || 0) + r.q; });
+  var makers = Object.keys(makerQty).sort(function (a, b) { return makerQty[b] - makerQty[a]; });
+
+
+
+  var BRAND_COLOR_OVERRIDE = { "엘지전자": "var(--brand-lg)", "엘지구독": "var(--brand-lg-light)", "삼성전자": "var(--brand-samsung)" };
+  var brandColorMap = {};
+  (function () {
+    var catIdx = 0;
+    makers.forEach(function (mk) {
+      if (BRAND_COLOR_OVERRIDE[mk]) { brandColorMap[mk] = BRAND_COLOR_OVERRIDE[mk]; return; }
+      brandColorMap[mk] = CAT_COLORS[catIdx % CAT_COLORS.length];
+      catIdx++;
+    });
+  })();
+
+  (function () {
+    var optAll = document.createElement("option");
+    optAll.value = "전체"; optAll.textContent = "전체 메이커";
+    makerSelect.appendChild(optAll);
+    makers.forEach(function (mk) {
+      var opt = document.createElement("option");
+      opt.value = mk; opt.textContent = mk;
+      makerSelect.appendChild(opt);
+    });
+  })();
+  makerSelect.addEventListener("change", function () {
+    state.maker = makerSelect.value;
+    render();
+  });
+
+  var modelItemSelect = document.getElementById("modelItemSelect");
+  var MODEL_ITEM_ORDER = ["LED TV", "사운드바", "빔프로젝터"];
+  (function () {
+    var optAll = document.createElement("option");
+    optAll.value = "전체"; optAll.textContent = "전체 품목";
+    modelItemSelect.appendChild(optAll);
+    MODEL_ITEM_ORDER.forEach(function (name) {
+      var opt = document.createElement("option");
+      opt.value = name; opt.textContent = name;
+      modelItemSelect.appendChild(opt);
+    });
+  })();
+  modelItemSelect.addEventListener("change", function () {
+    state.modelItem = modelItemSelect.value;
+    renderModels(filteredData());
+    renderModelTable(filteredData());
+  });
+
+  var brandViewSelect = document.getElementById("brandViewSelect");
+  [["대분류", "삼성·엘지·기타"], ["기타상세", "기타 브랜드 상세"]].forEach(function (pair) {
+    var opt = document.createElement("option");
+    opt.value = pair[0]; opt.textContent = pair[1];
+    brandViewSelect.appendChild(opt);
+  });
+  brandViewSelect.addEventListener("change", function () {
+    state.brandView = brandViewSelect.value;
+    renderBrands(filteredData(), filteredPYData());
+  });
+
+  var branchSelect = document.getElementById("branchSelect");
+  var storeSelect = document.getElementById("storeSelect");
+
+  function branchesForHq(hq) {
+    var qtyByBranch = {};
+    RAW.forEach(function (r) {
+      if (hq !== "전체" && r.hq !== hq) return;
+      qtyByBranch[r.bn] = (qtyByBranch[r.bn] || 0) + r.q;
+    });
+    var present = Object.keys(qtyByBranch);
+    var ordered = (hq !== "전체" && branchOrderByHq[hq]) ? branchOrderByHq[hq].slice() : [];
+    present.forEach(function (b) { if (ordered.indexOf(b) === -1) ordered.push(b); });
+    return ordered.filter(function (b) { return present.indexOf(b) !== -1; });
+  }
+
+  function storesForScope(hq, branch) {
+    var qtyByStore = {};
+    RAW.forEach(function (r) {
+      if (hq !== "전체" && r.hq !== hq) return;
+      if (branch !== "전체" && r.bn !== branch) return;
+      qtyByStore[r.sn] = (qtyByStore[r.sn] || 0) + r.q;
+    });
+    return Object.keys(qtyByStore).sort(function (a, b) { return qtyByStore[b] - qtyByStore[a]; });
+  }
+
+  function refreshBranchOptions() {
+    var branches = branchesForHq(state.hq);
+    branchSelect.innerHTML = "";
+    var optAll = document.createElement("option");
+    optAll.value = "전체"; optAll.textContent = "전체 지부 (" + branches.length + ")";
+    branchSelect.appendChild(optAll);
+    branches.forEach(function (b) {
+      var opt = document.createElement("option");
+      opt.value = b; opt.textContent = b;
+      branchSelect.appendChild(opt);
+    });
+    state.branch = "전체";
+    branchSelect.value = "전체";
+  }
+
+  function refreshStoreOptions() {
+    var stores = storesForScope(state.hq, state.branch);
+    storeSelect.innerHTML = "";
+    var optAll = document.createElement("option");
+    optAll.value = "전체"; optAll.textContent = "전체 지점 (" + stores.length + ")";
+    storeSelect.appendChild(optAll);
+    stores.forEach(function (s) {
+      var opt = document.createElement("option");
+      opt.value = s; opt.textContent = s;
+      storeSelect.appendChild(opt);
+    });
+    state.store = "전체";
+    storeSelect.value = "전체";
+  }
+
+  hqSelect.addEventListener("change", function () {
+    state.hq = hqSelect.value;
+    refreshBranchOptions();
+    refreshStoreOptions();
+    render();
+  });
+  branchSelect.addEventListener("change", function () {
+    state.branch = branchSelect.value;
+    refreshStoreOptions();
+    render();
+  });
+  storeSelect.addEventListener("change", function () {
+    state.store = storeSelect.value;
+    render();
+  });
+
+  var metricToggle = document.getElementById("metricToggle");
+  metricToggle.addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    state.metric = btn.getAttribute("data-metric");
+    Array.prototype.forEach.call(metricToggle.querySelectorAll("button"), function (b) {
+      b.classList.toggle("active", b === btn);
+    });
+    render();
+  });
+
+  var segTabToggle = document.getElementById("segTabToggle");
+  segTabToggle.addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    state.segTab = btn.getAttribute("data-tab");
+    Array.prototype.forEach.call(segTabToggle.querySelectorAll("button"), function (b) {
+      b.classList.toggle("active", b === btn);
+    });
+    updateSegTabView();
+  });
+
+
+  var specTierSelect = document.getElementById("specTierSelect");
+  ["전체"].concat(TIER_ORDER).forEach(function (t) {
+    var opt = document.createElement("option");
+    opt.value = t; opt.textContent = t === "전체" ? "전체" : TIER_LABEL[t];
+    specTierSelect.appendChild(opt);
+  });
+  specTierSelect.addEventListener("change", function () {
+    state.specTier = specTierSelect.value;
+    state.specName = "전체";
+    refreshSpecNameOptions();
+    updateSegTabView();
+  });
+
+  var specNameSelect = document.getElementById("specNameSelect");
+  refreshSpecNameOptions();
+  specNameSelect.addEventListener("change", function () {
+    state.specName = specNameSelect.value;
+    updateSegTabView();
+  });
+
+  function matchesScope(r) {
+    if (state.hq !== "전체" && r.hq !== state.hq) return false;
+    if (state.branch !== "전체" && r.bn !== state.branch) return false;
+    if (state.store !== "전체" && r.sn !== state.store) return false;
+    if (state.maker !== "전체" && r.mk !== state.maker) return false;
+    return true;
+  }
+
+  function filteredData() {
+    return RAW.filter(function (r) {
+      if (!matchesScope(r)) return false;
+      if (!inMonths(r.ym)) return false;
+      return true;
+    });
+  }
+
+
+  function filteredPYData() {
+    return PY_RAW.filter(function (r) {
+      if (!matchesScope(r)) return false;
+      if (!inMonths(r.ym)) return false;
+      return true;
+    });
+  }
+
+  var tooltip = document.getElementById("tooltip");
+  function showTooltip(html, x, y) {
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = "1";
+    var tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+    var vx = Math.min(x + 14, window.innerWidth - tw - 12);
+    var vy = Math.max(y - th - 14, 8);
+    tooltip.style.transform = "translate(" + vx + "px," + vy + "px)";
+  }
+  function hideTooltip() { tooltip.style.opacity = "0"; tooltip.style.transform = "translate(-9999px,-9999px)"; }
+
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  var dateFmt = function (d) {
+    var parts = d.split("-");
+    return parseInt(parts[1], 10) + "." + parseInt(parts[2], 10);
+  };
+  var weekdayFmt = function (d) {
+    var dt = new Date(d + "T00:00:00");
+    return ["일", "월", "화", "수", "목", "금", "토"][dt.getDay()];
+  };
+
+  function yoyPct(cur, py) {
+    if (!py) return null;
+    return ((cur - py) / py) * 100;
+  }
+  function deltaText(pct) {
+    var arrow = pct >= 0 ? "▲" : "▼";
+    return arrow + " " + Math.abs(Math.round(pct)) + "%";
+  }
+
+  function renderKPI(data, pyData) {
+    var qty = 0, rev = 0, profit = 0, subRev = 0;
+    data.forEach(function (r) { qty += r.q; rev += r.rev; profit += r.profit; subRev += r.subRev || 0; });
+    var avgPrice = qty !== 0 ? rev / qty : 0;
+
+    var pyQty = 0, pyRev = 0, pyProfit = 0;
+    pyData.forEach(function (r) { pyQty += r.q; pyRev += r.rev; pyProfit += r.profit; });
+    var pyAvgPrice = pyQty !== 0 ? pyRev / pyQty : 0;
+
+    function deltaDiv(cur, py) {
+      var pct = yoyPct(cur, py);
+      if (pct === null) return "";
+      var cls = pct >= 0 ? "delta-up" : "delta-down";
+      return '<div class="kpi-delta ' + cls + '">' + deltaText(pct) + " 전년동기대비</div>";
+    }
+
+    var ICON_QTY = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="11" width="3.4" height="7" rx="1" fill="currentColor"/><rect x="8.3" y="7" width="3.4" height="11" rx="1" fill="currentColor"/><rect x="14.6" y="3" width="3.4" height="15" rx="1" fill="currentColor"/></svg>';
+    var ICON_REV = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.6"/><text x="10" y="13.6" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" font-family="inherit">₩</text></svg>';
+    var ICON_PROFIT = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><polyline points="2.5,14.5 7.5,9 11,12 17.5,4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12,4.2 17.5,4.5 17.2,10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var ICON_PRICE = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="10" width="3" height="6" rx="0.8" fill="currentColor" opacity="0.55"/><rect x="8.5" y="6" width="3" height="10" rx="0.8" fill="currentColor" opacity="0.55"/><rect x="14.5" y="3" width="3" height="13" rx="0.8" fill="currentColor" opacity="0.55"/><line x1="1.5" y1="8.5" x2="18.5" y2="8.5" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.2 2.2"/></svg>';
+
+    var subNote = subRev > 0
+      ? '<div class="kpi-note">구독 정가환산 ' + fmtM(subRev) + '백만원 별도<span class="kpi-note-info" tabindex="0" aria-label="구독 안내">?<span class="kpi-note-tip">엘지구독·삼성구독으로 판매된 TV는 판매 시점에 매출이 잡히지 않아 총 매출액에서 제외했습니다. 이 금액은 해당 TV들의 정가(판매기준가) 합계로, 참고용입니다.</span></span></div>'
+      : "";
+
+    var items = [
+      { label: "총 판매수량", value: fmtInt.format(Math.round(qty)), unit: "개", deltaHtml: deltaDiv(qty, pyQty), icon: ICON_QTY },
+      { label: "총 매출액", value: fmtM(rev), unit: "백만원", deltaHtml: deltaDiv(rev, pyRev), icon: ICON_REV, noteHtml: subNote },
+      { label: "총 매출이익", value: fmtM(profit), unit: "백만원", deltaHtml: "", icon: ICON_PROFIT },
+      { label: "평균 판매단가", value: fmtM(avgPrice), unit: "백만원", deltaHtml: deltaDiv(avgPrice, pyAvgPrice), icon: ICON_PRICE }
+    ];
+    var row = document.getElementById("kpiRow");
+    row.innerHTML = "";
+    items.forEach(function (it) {
+      var div = document.createElement("div");
+      div.className = "kpi";
+      div.innerHTML = '<div class="kpi-icon">' + it.icon + '</div><div class="label">' + it.label + '</div><div class="value">' + it.value +
+        (it.unit ? ' <span class="unit">' + it.unit + '</span>' : "") + "</div>" + it.deltaHtml + (it.noteHtml || "");
+      row.appendChild(div);
+    });
+  }
+
+  function renderTrend(data, pyData) {
+    var isMonthly = state.months.length !== 1;
+    var groupKey = isMonthly ? "ym" : "d";
+    document.getElementById("trendTitle").textContent = (isMonthly ? "월별 판매 추이" : "일별 판매 추이") + (state.months.length ? " · " + periodLabel() : " (전체 기간)");
+
+    var byKey = {};
+    data.forEach(function (r) {
+      var k = r[groupKey];
+      if (!byKey[k]) byKey[k] = { q: 0, rev: 0, profit: 0 };
+      byKey[k].q += r.q; byKey[k].rev += r.rev; byKey[k].profit += r.profit;
+    });
+    var keys = Object.keys(byKey).sort();
+    var metric = state.metric;
+    var keyLabel = function (k) { return isMonthly ? monthLabel(k) : dateFmt(k); };
+    var keyTitle = function (k) { return isMonthly ? monthLabel(k) : (k.replace(/-/g, ".") + " (" + weekdayFmt(k) + ")"); };
+
+    var pyByYm = {};
+    pyData.forEach(function (r) {
+      if (!pyByYm[r.ym]) pyByYm[r.ym] = { q: 0, rev: 0, profit: 0 };
+      pyByYm[r.ym].q += r.q; pyByYm[r.ym].rev += r.rev; pyByYm[r.ym].profit += r.profit;
+    });
+    var showPY = isMonthly && keys.some(function (k) { return pyByYm[k] && pyByYm[k][metric] > 0; });
+
+    var container = document.getElementById("trendChart");
+    container.innerHTML = "";
+    var cw0 = container.clientWidth || 1120, narrow = cw0 < 640;
+    var W = narrow ? Math.max(cw0, 300) : 1120, H = narrow ? 230 : 260, padL = narrow ? 42 : 62, padR = 14, padT = 16, padB = 30;
+    var innerW = W - padL - padR, innerH = H - padT - padB;
+
+    var curValues = keys.map(function (k) { return byKey[k][metric]; });
+    var pyValues = showPY ? keys.map(function (k) { return pyByYm[k] ? pyByYm[k][metric] : 0; }) : [];
+    var maxV = Math.max.apply(null, curValues.concat(pyValues).concat([0]));
+    var niceMax = maxV <= 0 ? 1 : maxV * 1.15;
+
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": (isMonthly ? "월별 판매 추이" : "일별 판매 추이") + (showPY ? " (전년동기 비교 포함)" : "") });
+
+    var ticks = 4;
+    for (var t = 0; t <= ticks; t++) {
+      var val = (niceMax / ticks) * t;
+      var y = padT + innerH - (val / niceMax) * innerH;
+      svg.appendChild(svgEl("line", { x1: padL, x2: W - padR, y1: y, y2: y, class: "grid-line" }));
+      var lbl = svgEl("text", { x: padL - 10, y: y + 4, class: "tick-label", "text-anchor": "end" });
+      lbl.textContent = metric === "q" ? fmtInt.format(Math.round(val)) : fmtM(val);
+      svg.appendChild(lbl);
+    }
+
+    var n = keys.length; if(!n){container.innerHTML="<p>공개본에는 판매 데이터가 없습니다.</p>";return;}
+    var xFor = function (i) { return padL + (n <= 1 ? innerW / 2 : (innerW * i) / (n - 1)); };
+    var yFor = function (v) { return padT + innerH - (v / niceMax) * innerH; };
+
+
+    var areaPts = "M" + xFor(0) + "," + (padT + innerH) + " L" + keys.map(function (k, i) {
+      return xFor(i) + "," + yFor(byKey[k][metric]);
+    }).join(" L") + " L" + xFor(n - 1) + "," + (padT + innerH) + " Z";
+    svg.appendChild(svgEl("path", { d: areaPts, fill: "var(--accent)", opacity: "0.1", stroke: "none" }));
+
+    if (showPY) {
+      var pyPts = keys.map(function (k, i) { return xFor(i) + "," + yFor(pyByYm[k] ? pyByYm[k][metric] : 0); }).join(" ");
+      svg.appendChild(svgEl("polyline", { points: pyPts, fill: "none", stroke: "var(--ink-soft)", "stroke-width": "2.5", "stroke-dasharray": "7 5", "stroke-linejoin": "round", "stroke-linecap": "round" }));
+      keys.forEach(function (k, i) {
+        var pv = pyByYm[k] ? pyByYm[k][metric] : 0;
+        svg.appendChild(svgEl("circle", { cx: xFor(i), cy: yFor(pv), r: 3, fill: "var(--surface)", stroke: "var(--ink-soft)", "stroke-width": 2 }));
+      });
+    }
+
+    var linePts = keys.map(function (k, i) { return xFor(i) + "," + yFor(byKey[k][metric]); }).join(" ");
+    svg.appendChild(svgEl("polyline", { points: linePts, fill: "none", stroke: "var(--accent)", "stroke-width": "2.5", "stroke-linejoin": "round", "stroke-linecap": "round" }));
+
+    var peakIdx = 0;
+    keys.forEach(function (k, i) { if (byKey[k][metric] > byKey[keys[peakIdx]][metric]) peakIdx = i; });
+
+    keys.forEach(function (k, i) {
+      var x = xFor(i), y = yFor(byKey[k][metric]);
+      var isPeak = i === peakIdx;
+      var dot = svgEl("circle", { cx: x, cy: y, r: isPeak ? 5 : 3, fill: isPeak ? "var(--accent)" : "var(--surface)", stroke: "var(--accent)", "stroke-width": isPeak ? 2 : 1.6 });
+      svg.appendChild(dot);
+      var tickStride = Math.max(Math.ceil(n / (narrow ? 5 : 12)), 1);
+      if (i % tickStride === 0 || i === n - 1) {
+        var xl = svgEl("text", { x: x, y: H - 8, class: "tick-label", "text-anchor": "middle" });
+        xl.textContent = keyLabel(k);
+        svg.appendChild(xl);
+      }
+      var hit = svgEl("rect", { x: x - (innerW / n) / 2, y: padT, width: Math.max(innerW / n, 8), height: innerH, fill: "transparent", class: "hover-target" });
+      hit.addEventListener("mouseenter", function (e) {
+        var rect = container.getBoundingClientRect();
+        var scale = rect.width / W;
+        var py = pyByYm[k];
+        var pyLine = (showPY && py) ? '<div class="t-row"><span>전년동기 ' + (metric === "q" ? "수량" : "금액") + "</span><span>" + (metric === "q" ? fmtInt.format(Math.round(py.q)) + "개" : fmtM(py.rev) + "백만원") + "</span></div>" : "";
+        showTooltip(
+          '<div class="t-title">' + keyTitle(k) + "</div>" +
+          '<div class="t-row"><span>판매수량</span><span>' + fmtInt.format(Math.round(byKey[k].q)) + "개</span></div>" +
+          '<div class="t-row"><span>매출액</span><span>' + fmtM(byKey[k].rev) + "백만원</span></div>" +
+          '<div class="t-row"><span>매출이익</span><span>' + fmtM(byKey[k].profit) + "백만원</span></div>" + pyLine,
+          rect.left + x * scale, rect.top + y * scale
+        );
+        dot.setAttribute("r", "6");
+      });
+      hit.addEventListener("mouseleave", function () { hideTooltip(); dot.setAttribute("r", isPeak ? "5" : "3"); });
+      svg.appendChild(hit);
+    });
+
+    container.appendChild(svg);
+
+    var legend = document.getElementById("trendLegend");
+    if (showPY) {
+      legend.style.display = "";
+      legend.innerHTML =
+        '<span class="legend-item"><span class="legend-dot" style="background:var(--accent);"></span>2026년</span>' +
+        '<span class="legend-item"><span class="legend-dot dashed" style="background:var(--ink-soft);"></span>2025년 동기(점선)</span>';
+    } else {
+      legend.style.display = "none";
+      legend.innerHTML = "";
+    }
+
+    var peakKey = keys[peakIdx];
+    var callout = document.getElementById("peakCallout");
+    if (peakKey) {
+      callout.textContent = (isMonthly ? "최다 판매월 " : "최다 판매일 ") + keyTitle(peakKey) + " · " +
+        (metric === "q" ? fmtInt.format(Math.round(byKey[peakKey].q)) + "개" : fmtM(byKey[peakKey].rev) + "백만원");
+    } else {
+      callout.textContent = "";
+    }
+
+    var yoyCallout = document.getElementById("yoyCallout");
+    if (!isMonthly || state.months.length > 1) {
+      var curTotal = 0, pyTotal = 0;
+      data.forEach(function (r) { curTotal += r[metric]; });
+      pyData.forEach(function (r) { pyTotal += r[metric]; });
+      if (pyTotal > 0) {
+        var pct = yoyPct(curTotal, pyTotal);
+        yoyCallout.textContent = "전년동기 대비 " + deltaText(pct);
+        yoyCallout.className = "callout " + (pct >= 0 ? "delta-up" : "delta-down");
+        yoyCallout.style.display = "";
+      } else {
+        yoyCallout.style.display = "none";
+      }
+    } else {
+      yoyCallout.style.display = "none";
+    }
+  }
+
+  function renderModelList(containerId, top, metric) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    var rowH = 54, padTop = 6, padBottom = 6;
+    var W = Math.max(container.clientWidth || 680, 260), H = top.length * rowH + padTop + padBottom;
+    var maxV = Math.max.apply(null, top.map(function (t) { return t.d[metric]; }).concat([1]));
+
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "모델별 판매 순위 (" + (metric === "q" ? "수량" : "금액") + " 기준)" });
+    var barMaxW = W - 16;
+    var barH = 20;
+
+    top.forEach(function (t, i) {
+      var y = padTop + i * rowH;
+      var w = Math.max((t.d[metric] / maxV) * barMaxW, 3);
+      var color = brandColorMap[t.d.mk] || "var(--accent)";
+
+      var dot = svgEl("circle", { cx: 4, cy: y + 6, r: 4, fill: color });
+      svg.appendChild(dot);
+      var nameLbl = svgEl("text", { x: 14, y: y + 10, class: "bar-name-label" });
+      nameLbl.textContent = (i + 1) + ". " + t.model + "  ·  " + t.d.mk;
+      svg.appendChild(nameLbl);
+
+      if (t.d.sub) {
+        var badgeW = 34;
+        var badge = svgEl("rect", { x: barMaxW - badgeW, y: y + 1, width: badgeW, height: 15, rx: 7.5, fill: "var(--accent-soft)" });
+        var badgeTxt = svgEl("text", { x: barMaxW - badgeW / 2, y: y + 11.5, "text-anchor": "middle", fill: "var(--accent-soft-ink)", style: "font-size:10px;font-weight:700;" });
+        badgeTxt.textContent = "구독";
+        svg.appendChild(badge); svg.appendChild(badgeTxt);
+      }
+
+      var subLbl = svgEl("text", { x: 14, y: y + 25, class: "bar-sub-label" });
+      subLbl.textContent = t.d.name;
+      svg.appendChild(subLbl);
+
+      var g = svgEl("g", { class: "hover-target" });
+      var bg = svgEl("rect", { x: 0, y: y + 30, width: barMaxW, height: barH, rx: 4, fill: "var(--surface-2)" });
+      var bar = svgEl("rect", { x: 0, y: y + 30, width: w, height: barH, rx: 4, fill: color });
+      g.appendChild(bg); g.appendChild(bar);
+      var valLbl = svgEl("text", { x: Math.min(w + 8, barMaxW - 4), y: y + 30 + 14, class: "value-label" });
+      valLbl.textContent = metric === "q" ? fmtInt.format(Math.round(t.d.q)) + "개" : fmtM(t.d.rev) + "백만원";
+      if (w > barMaxW - 90) { valLbl.setAttribute("x", Math.max(w - 6, 6)); valLbl.setAttribute("text-anchor", "end"); valLbl.setAttribute("fill", "var(--accent-ink)"); }
+      svg.appendChild(g);
+      svg.appendChild(valLbl);
+
+      var hit = svgEl("rect", { x: 0, y: y, width: W, height: rowH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        showTooltip(
+          '<div class="t-title">' + t.model + (t.d.sub ? " · 구독" : "") + "</div>" +
+          '<div class="t-row"><span>' + t.d.name + "</span></div>" +
+          '<div class="t-row"><span>메이커</span><span>' + t.d.mk + "</span></div>" +
+          '<div class="t-row"><span>판매수량</span><span>' + fmtInt.format(Math.round(t.d.q)) + "개</span></div>" +
+          '<div class="t-row"><span>매출액</span><span>' + fmtM(t.d.rev) + "백만원</span></div>" +
+          '<div class="t-row"><span>매출이익</span><span>' + fmtM(t.d.profit) + "백만원</span></div>",
+          e.clientX, e.clientY
+        );
+        bar.setAttribute("opacity", "0.82");
+      });
+      hit.addEventListener("mouseleave", function () { hideTooltip(); bar.setAttribute("opacity", "1"); });
+      svg.appendChild(hit);
+    });
+
+    container.appendChild(svg);
+  }
+
+
+  function subModelBaseKey(m) {
+    var dot = m.indexOf(".");
+    if (dot < 1) return m;
+    return m.slice(0, dot - 1) + "*" + m.slice(dot);
+  }
+  function subModelVariantChar(m) {
+    var dot = m.indexOf(".");
+    return dot > 0 ? m[dot - 1] : "";
+  }
+  function subModelDisplay(baseKey, variantChars) {
+    var star = baseKey.indexOf("*");
+    if (star < 0) return baseKey;
+    var chars = Object.keys(variantChars).sort();
+    var mid = chars.length <= 1 ? (chars[0] || "") : "[" + chars.join("/") + "]";
+    return baseKey.slice(0, star) + mid + baseKey.slice(star + 1);
+  }
+
+
+  function aggregateModelRows(rows) {
+    var byModel = {};
+    rows.forEach(function (r) {
+      var isSub = !!r.sub;
+      var key = isSub ? subModelBaseKey(r.m) : r.m;
+      if (!byModel[key]) byModel[key] = { name: r.pn, mk: r.mk, q: 0, rev: 0, profit: 0, sub: isSub, variants: {} };
+      byModel[key].q += r.q; byModel[key].rev += r.rev; byModel[key].profit += r.profit;
+      if (isSub) byModel[key].variants[subModelVariantChar(r.m)] = true;
+    });
+    return Object.keys(byModel).map(function (key) {
+      var d = byModel[key];
+      return { model: d.sub ? subModelDisplay(key, d.variants) : key, d: d };
+    });
+  }
+
+  function renderModels(data) {
+    var itemFilter = state.modelItem;
+    var filtered = itemFilter === "전체" ? data : data.filter(function (r) { return r.iname === itemFilter; });
+    var models = aggregateModelRows(filtered);
+    document.getElementById("modelNote").textContent =
+      "전체 " + models.length + "개 모델 · " + (state.metric === "q" ? "판매수량" : "매출액") + " 기준 TOP 5 · 점 색상 = 메이커 · 구독은 색상 코드만 다른 모델을 합산";
+
+    var top = models.slice().sort(function (a, b) { return b.d[state.metric] - a.d[state.metric]; }).slice(0, 5);
+    renderModelList("modelChart", top, state.metric);
+  }
+
+  function renderShareChart(containerId, data, pyData, keyFn, ariaLabel, colorFn, extraPctFn) {
+    var byKey = {};
+    data.forEach(function (r) {
+      var k = keyFn(r);
+      if (!byKey[k]) byKey[k] = { q: 0, rev: 0 };
+      byKey[k].q += r.q; byKey[k].rev += r.rev;
+    });
+    var pyByKey = {};
+    (pyData || []).forEach(function (r) {
+      var k = keyFn(r);
+      if (k === null) return; // 브랜드 등 분류 정보가 없는 근사 전년동기 행(예: 참고용 비교 자료 리포트 기반)은 이 집계에서 제외
+      if (!pyByKey[k]) pyByKey[k] = { q: 0, rev: 0 };
+      pyByKey[k].q += r.q; pyByKey[k].rev += r.rev;
+    });
+    var metric = state.metric;
+    var groups = Object.keys(byKey).map(function (k) { return { name: k, d: byKey[k], py: pyByKey[k] || null }; });
+    groups.sort(function (a, b) { return b.d[metric] - a.d[metric]; });
+    var total = groups.reduce(function (s, it) { return s + it.d[metric]; }, 0) || 1;
+
+    var container = document.getElementById(containerId);
+    container.innerHTML = "";
+    var rowH = 46, padTop = 4;
+    var W = Math.max(container.clientWidth || 380, 260), H = Math.max(groups.length, 1) * rowH + padTop;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": ariaLabel });
+    var barMaxW = W - 16;
+    var maxV = Math.max.apply(null, groups.map(function (it) { return it.d[metric]; }).concat([1]));
+
+    groups.forEach(function (it, i) {
+      var y = padTop + i * rowH;
+      var pct = (it.d[metric] / total) * 100;
+      var w = Math.max((it.d[metric] / maxV) * barMaxW, 3);
+      var color = colorFn ? colorFn(it.name, i) : CAT_COLORS[i % CAT_COLORS.length];
+
+      var dot = svgEl("circle", { cx: 5, cy: y + 6, r: 4.5, fill: color });
+      svg.appendChild(dot);
+      var nameLbl = svgEl("text", { x: 15, y: y + 10, class: "bar-name-label" });
+      nameLbl.textContent = it.name;
+      svg.appendChild(nameLbl);
+      var pctLbl = svgEl("text", { x: barMaxW, y: y + 10, class: "value-label", "text-anchor": "end" });
+      var extraPct = extraPctFn ? extraPctFn(it, metric, byKey) : "";
+      pctLbl.textContent = ((pct > 0 && pct < 1) ? "1% 미만" : pct.toFixed(0) + "%") + extraPct;
+      svg.appendChild(pctLbl);
+
+      var g = svgEl("g", { class: "hover-target" });
+      var bg = svgEl("rect", { x: 0, y: y + 16, width: barMaxW, height: 14, rx: 4, fill: "var(--surface-2)" });
+      var bar = svgEl("rect", { x: 0, y: y + 16, width: w, height: 14, rx: 4, fill: color });
+      g.appendChild(bg); g.appendChild(bar);
+      svg.appendChild(g);
+
+      var pyVal = it.py ? it.py[metric] : 0;
+      if (pyVal > 0) {
+        var pct2 = yoyPct(it.d[metric], pyVal);
+        var deltaLbl = svgEl("text", { x: 15, y: y + 40, class: pct2 >= 0 ? "delta-up" : "delta-down", style: "font-size:10.5px; font-weight:700;" });
+        deltaLbl.textContent = "전년동기 대비 " + deltaText(pct2);
+        svg.appendChild(deltaLbl);
+      }
+
+      var hit = svgEl("rect", { x: 0, y: y, width: W, height: rowH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        var pyLine = pyVal > 0 ? '<div class="t-row"><span>전년동기</span><span>' + (metric === "q" ? fmtInt.format(Math.round(it.py.q)) + "개" : fmtM(it.py.rev) + "백만원") + "</span></div>" : "";
+        showTooltip(
+          '<div class="t-title">' + it.name + "</div>" +
+          '<div class="t-row"><span>판매수량</span><span>' + fmtInt.format(Math.round(it.d.q)) + "개</span></div>" +
+          '<div class="t-row"><span>매출액</span><span>' + fmtM(it.d.rev) + "백만원</span></div>" +
+          '<div class="t-row"><span>MS 비중</span><span>' + pct.toFixed(1) + "%</span></div>" + pyLine,
+          e.clientX, e.clientY
+        );
+        bar.setAttribute("opacity", "0.85");
+      });
+      hit.addEventListener("mouseleave", function () { hideTooltip(); bar.setAttribute("opacity", "1"); });
+      svg.appendChild(hit);
+    });
+    container.appendChild(svg);
+  }
+
+  function renderItems(data, pyData) {
+    renderShareChart("itemChart", data, pyData, function (r) { return r.iname; }, "품목별 비중");
+  }
+
+  function macroBrand(mk) {
+    if (mk === null) return null; // 브랜드 정보가 없는 근사 전년동기 데이터 표시 — "기타"로 오분류하지 않도록 별도 처리
+    if (mk === "삼성전자") return "삼성";
+    if (mk === "엘지전자" || mk === "엘지구독") return "엘지";
+    return "기타";
+  }
+  var MACRO_BRAND_COLOR = { "삼성": "var(--brand-samsung)", "엘지": "var(--brand-lg)", "기타": "var(--ink-muted)" };
+
+  function renderBrands(data, pyData) {
+    var brandNote = document.getElementById("brandNote");
+    if (state.brandView === "기타상세") {
+      var otherData = data.filter(function (r) { return macroBrand(r.mk) === "기타"; });
+      var otherPy = (pyData || []).filter(function (r) { return macroBrand(r.mk) === "기타"; });
+      brandNote.textContent = "삼성전자·엘지전자(구독 포함)를 제외한 기타 브랜드만 표시";
+      if (otherData.length === 0) {
+        document.getElementById("brandChart").innerHTML = '<div class="note" style="padding:8px 0 4px;">선택한 조건에서 기타 브랜드 판매가 없습니다.</div>';
+        return;
+      }
+      renderShareChart("brandChart", otherData, otherPy, function (r) { return r.mk; }, "기타 브랜드별 비중", function (name) {
+        return brandColorMap[name] || "var(--ink-muted)";
+      });
+      return;
+    }
+
+    brandNote.textContent = "엘지구독은 엘지에 합산 · 구독 비중 별도 표시";
+    var lgSubQ = 0, lgSubRev = 0;
+    data.forEach(function (r) { if (r.mk === "엘지구독") { lgSubQ += r.q; lgSubRev += r.rev; } });
+    renderShareChart("brandChart", data, pyData, function (r) { return macroBrand(r.mk); }, "브랜드별 비중 (MS)", function (name) {
+      return MACRO_BRAND_COLOR[name] || "var(--ink-muted)";
+    }, function (it, metric) {
+
+      if (it.name !== "엘지" || it.d[metric] <= 0) return "";
+      var subVal = metric === "q" ? lgSubQ : lgSubRev;
+      var pctSub = (subVal / it.d[metric]) * 100;
+      return " (구독 " + ((pctSub > 0 && pctSub < 1) ? "1% 미만" : pctSub.toFixed(0) + "%") + ")";
+    });
+  }
+
+
+  var INCH_WHITELIST = { 27: 1, 32: 1, 40: 1, 42: 1, 43: 1, 48: 1, 50: 1, 55: 1, 65: 1, 75: 1, 77: 1, 83: 1, 85: 1, 86: 1, 98: 1, 100: 1, 115: 1 };
+  var CM_LOOKUP = { 80: 32, 101: 40, 107: 43, 109: 43, 120: 48, 125: 50, 127: 50, 138: 55, 140: 55, 163: 65, 165: 65, 189: 75, 190: 75, 214: 85, 215: 85, 222: 86, 248: 98, 254: 100, 292: 115 };
+  function isolatedNumbers(s) {
+    var re = /(^|[^0-9])(\d{2,3})([^0-9]|$)/g, mt, out = [];
+    while ((mt = re.exec(s))) { out.push(mt[2]); re.lastIndex = mt.index + mt[1].length + 1; }
+    return out;
+  }
+
+
+  function extractInch(m, pn) {
+    var mm = pn.match(/(\d{2,3})\s*인치/);
+    if (mm && INCH_WHITELIST[parseInt(mm[1], 10)]) return parseInt(mm[1], 10);
+    var nums = isolatedNumbers(m.split(".")[0]);
+    for (var i = 0; i < nums.length; i++) { var v = parseInt(nums[i], 10); if (INCH_WHITELIST[v]) return v; }
+    var cmMatch = pn.match(/\((\d{2,3})\s*cm\)/i);
+    if (cmMatch && CM_LOOKUP[parseInt(cmMatch[1], 10)]) return CM_LOOKUP[parseInt(cmMatch[1], 10)];
+    var pnNums = isolatedNumbers(pn);
+    for (var j = 0; j < pnNums.length; j++) { var v2 = parseInt(pnNums[j], 10); if (INCH_WHITELIST[v2]) return v2; }
+    return null;
+  }
+  var INCH_BUCKET_ORDER = ["30형대", "40형대", "50형대", "60형대", "70형대", "80형대", "90형대", "100형", "100형이상"];
+  function inchBucket(inch) {
+    if (inch == null) return null;
+    if (inch < 40) return "30형대";
+    if (inch < 50) return "40형대";
+    if (inch < 60) return "50형대";
+    if (inch < 70) return "60형대";
+    if (inch < 80) return "70형대";
+    if (inch < 90) return "80형대";
+    if (inch < 100) return "90형대";
+    if (inch === 100) return "100형";
+    return "100형이상";
+  }
+
+
+  var MODEL_SPEC_OVERRIDE = {};
+
+
+
+
+  function specCheck(s) {
+    var su = s.toUpperCase();
+    var ns = su.replace(/[ _()]/g, "");
+    if (ns.indexOf("OLED") >= 0 || s.indexOf("올레드") >= 0) return "OLED";
+    if (ns.indexOf("MICRORGB") >= 0 || ns.indexOf("MINIRGB") >= 0) return "M.RGB";
+    if (s.indexOf("스탠바이미") >= 0) return "StandbyMe";
+    if (ns.indexOf("NEOQLED") >= 0) return "Neo QLED";
+    if (ns.indexOf("QNED") >= 0) return "QNED";
+    if (s.indexOf("나노셀") >= 0 || ns.indexOf("NANOCELL") >= 0) return "NanoCell";
+    if (ns.indexOf("QLED") >= 0) return "QLED";
+    if (ns.indexOf("MINILED") >= 0) return "Mini LED";
+    if (s.indexOf("울트라") >= 0 || /\bULTRA\b/.test(su)) return "UHD";
+    if (/(^|[^A-Z])UHD([^A-Z]|$)/.test(su)) return "UHD";
+    if (/(^|[^A-Z])FHD([^A-Z]|$)/.test(su)) return "FHD";
+    if (/(^|[^A-Z])HD([^A-Z]|$)/.test(su)) return "HD";
+    return null;
+  }
+  function specOf(m, pn) { return MODEL_SPEC_OVERRIDE[m] || specCheck(pn) || specCheck(m); }
+
+  function tvRows(data) { return data.filter(function (r) { return r.ic === "DEMO-TV"; }); }
+
+  function renderInchChart(data) {
+    var rows = tvRows(data);
+    var byBucket = {};
+    INCH_BUCKET_ORDER.forEach(function (k) { byBucket[k] = { q: 0, rev: 0 }; });
+    rows.forEach(function (r) {
+      var b = inchBucket(extractInch(r.m, r.pn));
+      if (!b) return;
+      byBucket[b].q += r.q; byBucket[b].rev += r.rev;
+    });
+    var metric = state.metric;
+    var total = INCH_BUCKET_ORDER.reduce(function (s, k) { return s + byBucket[k][metric]; }, 0) || 1;
+    var maxV = Math.max.apply(null, INCH_BUCKET_ORDER.map(function (k) { return byBucket[k][metric]; }).concat([1]));
+
+    var container = document.getElementById("inchChart");
+    container.innerHTML = "";
+    var rowH = 34, padTop = 4;
+    var W = Math.max(container.clientWidth || 380, 260), H = INCH_BUCKET_ORDER.length * rowH + padTop;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "인치별 판매" });
+    var barMaxW = W - 16;
+
+    INCH_BUCKET_ORDER.forEach(function (k, i) {
+      var y = padTop + i * rowH;
+      var d = byBucket[k];
+      var pct = (d[metric] / total) * 100;
+      var w = Math.max((d[metric] / maxV) * barMaxW, d[metric] > 0 ? 3 : 0);
+
+      var op = 0.32 + (i / (INCH_BUCKET_ORDER.length - 1)) * 0.68;
+
+      var nameLbl = svgEl("text", { x: 0, y: y + 10, class: "bar-name-label" });
+      nameLbl.textContent = k;
+      svg.appendChild(nameLbl);
+      var pctLbl = svgEl("text", { x: barMaxW, y: y + 10, class: "value-label", "text-anchor": "end" });
+      pctLbl.textContent = d[metric] > 0 ? ((pct > 0 && pct < 1) ? "1% 미만" : pct.toFixed(0) + "%") : "-";
+      svg.appendChild(pctLbl);
+
+      var g = svgEl("g", { class: "hover-target" });
+      var bg = svgEl("rect", { x: 0, y: y + 16, width: barMaxW, height: 12, rx: 4, fill: "var(--surface-2)" });
+      var bar = svgEl("rect", { x: 0, y: y + 16, width: w, height: 12, rx: 4, fill: "var(--accent)", opacity: op });
+      g.appendChild(bg); g.appendChild(bar);
+      svg.appendChild(g);
+
+      var hit = svgEl("rect", { x: 0, y: y, width: W, height: rowH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        showTooltip(
+          '<div class="t-title">' + k + '</div>' +
+          '<div class="t-row"><span>판매수량</span><span>' + fmtInt.format(Math.round(d.q)) + '개</span></div>' +
+          '<div class="t-row"><span>매출액</span><span>' + fmtM(d.rev) + '백만원</span></div>' +
+          '<div class="t-row"><span>비중</span><span>' + pct.toFixed(1) + '%</span></div>',
+          e.clientX, e.clientY
+        );
+        bar.setAttribute("opacity", "1");
+      });
+      hit.addEventListener("mouseleave", function () { hideTooltip(); bar.setAttribute("opacity", op); });
+      svg.appendChild(hit);
+    });
+    container.appendChild(svg);
+  }
+
+
+  var SEG_TAB_TITLE = { seg: "SEG 등급별 삼성·엘지 비교", spec: "스펙(SEG)별 판매", inch: "인치별 판매" };
+  var SEG_TAB_NOTE = { seg: "LED TV · 엘지구독은 엘지전자에 합산 · 스펙 미분류 모델 제외", spec: "", inch: "LED TV 전용 · 화면 크기 구간별 비중" };
+  function updateSegTabView() {
+
+
+    document.getElementById("segCompareChart").style.display = state.segTab === "seg" ? "" : "none";
+    document.getElementById("specPanel").style.display = state.segTab === "spec" ? "" : "none";
+    document.getElementById("inchChart").style.display = state.segTab === "inch" ? "" : "none";
+
+
+    var data = filteredData();
+    if (state.segTab === "seg") renderSegCompare(data);
+    else if (state.segTab === "spec") renderSpecPanel(data);
+    else renderInchChart(data);
+
+    document.getElementById("segTabTitle").textContent =
+      (state.segTab === "spec" && state.specName !== "전체") ? (state.specName + " · TOP 5 모델") : SEG_TAB_TITLE[state.segTab];
+    document.getElementById("segTabNote").textContent = SEG_TAB_NOTE[state.segTab];
+
+
+    var showLegend = state.segTab === "seg" || (state.segTab === "spec" && state.specName === "전체");
+    document.getElementById("segTierLegend").style.display = showLegend ? "" : "none";
+  }
+
+  function renderSpecChart(data) {
+    var rows = tvRows(data);
+    var scoped = state.specTier === "전체" ? rows : rows.filter(function (r) {
+      var sp = specOf(r.m, r.pn);
+      return sp && SPEC_TIER[sp] === state.specTier;
+    });
+    var classified = [], excludedQty = 0;
+    scoped.forEach(function (r) {
+      if (specOf(r.m, r.pn)) classified.push(r); else excludedQty += r.q;
+    });
+    renderShareChart("specChart", classified, null, function (r) { return specOf(r.m, r.pn); }, "스펙(SEG)별 판매", function (name) {
+      return TIER_COLOR[SPEC_TIER[name]] || "var(--ink-muted)";
+    });
+    var totalQty = scoped.reduce(function (s, r) { return s + r.q; }, 0) || 1;
+    var excludedPct = (excludedQty / totalQty) * 100;
+    SEG_TAB_NOTE.spec = "LED TV 전용 · 상품명·모델번호에서 자동 추출" +
+      (excludedQty > 0 ? " · " + fmtInt.format(Math.round(excludedQty)) + "개(" + ((excludedPct > 0 && excludedPct < 1) ? "1% 미만" : excludedPct.toFixed(0) + "%") + ")는 스펙 정보 부족으로 제외" : "");
+  }
+
+  function renderSpecModelList(data, specName) {
+    var rows = tvRows(data).filter(function (r) { return specOf(r.m, r.pn) === specName; });
+    var models = aggregateModelRows(rows);
+    document.getElementById("specModelNote").textContent =
+      specName + " · 전체 " + models.length + "개 모델 · " + (state.metric === "q" ? "판매수량" : "매출액") + " 기준 TOP 5 · 점 색상 = 메이커 · 구독은 색상 코드만 다른 모델을 합산";
+    var top = models.slice().sort(function (a, b) { return b.d[state.metric] - a.d[state.metric]; }).slice(0, 5);
+    renderModelList("specModelChart", top, state.metric);
+    SEG_TAB_NOTE.spec = "LED TV 전용 · " + specName + " 모델 중 " + (state.metric === "q" ? "판매수량" : "매출액") + " TOP 5";
+  }
+
+
+
+  function renderSpecPanel(data) {
+    var showOverview = state.specName === "전체";
+    document.getElementById("specChart").style.display = showOverview ? "" : "none";
+    document.getElementById("specModelChart").style.display = showOverview ? "none" : "";
+    document.getElementById("specModelNote").style.display = showOverview ? "none" : "";
+    if (showOverview) renderSpecChart(data);
+    else renderSpecModelList(data, state.specName);
+  }
+
+  function refreshSpecNameOptions() {
+    var sel = document.getElementById("specNameSelect");
+    sel.innerHTML = "";
+    var optAll = document.createElement("option");
+    optAll.value = "전체"; optAll.textContent = "전체";
+    sel.appendChild(optAll);
+    specsForTier(state.specTier).forEach(function (name) {
+      var opt = document.createElement("option");
+      opt.value = name; opt.textContent = name;
+      sel.appendChild(opt);
+    });
+    sel.value = state.specName;
+  }
+
+  function renderSegCompare(data) {
+    var rows = tvRows(data);
+    var byTier = {};
+    TIER_ORDER.forEach(function (t) { byTier[t] = { LG: { q: 0, rev: 0 }, Samsung: { q: 0, rev: 0 }, Other: { q: 0, rev: 0 } }; });
+    rows.forEach(function (r) {
+      var spec = specOf(r.m, r.pn);
+      if (!spec) return;
+      var tier = SPEC_TIER[spec];
+      var g = (r.mk === "엘지전자" || r.mk === "엘지구독") ? "LG" : (r.mk === "삼성전자" ? "Samsung" : "Other");
+      byTier[tier][g].q += r.q; byTier[tier][g].rev += r.rev;
+    });
+    var metric = state.metric;
+    var maxV = 1;
+    TIER_ORDER.forEach(function (t) { maxV = Math.max(maxV, byTier[t].LG[metric], byTier[t].Samsung[metric]); });
+    var fmtVal = function (v) { return metric === "q" ? fmtInt.format(Math.round(v)) + "개" : fmtM(v) + "백만원"; };
+
+    var container = document.getElementById("segCompareChart");
+    container.innerHTML = "";
+    var groupH = 64, padTop = 8;
+    var W = Math.max(container.clientWidth || 680, 320), H = TIER_ORDER.length * groupH + padTop;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "SEG 등급별 삼성·엘지 비교" });
+    var labelW = 92, barMaxW = W - labelW - 8, barH = 16, barGap = 4;
+
+    TIER_ORDER.forEach(function (t, i) {
+      var y = padTop + i * groupH;
+      var d = byTier[t];
+      var tierTotal = d.LG[metric] + d.Samsung[metric] + d.Other[metric];
+
+      var tierDot = svgEl("circle", { cx: 4, cy: y + 10, r: 4, fill: TIER_COLOR[t] });
+      svg.appendChild(tierDot);
+      var tierLbl = svgEl("text", { x: 14, y: y + 14, class: "bar-name-label" });
+      tierLbl.textContent = TIER_LABEL[t];
+      svg.appendChild(tierLbl);
+      var totalLbl = svgEl("text", { x: 14, y: y + 30, class: "bar-sub-label" });
+      totalLbl.textContent = fmtVal(tierTotal);
+      svg.appendChild(totalLbl);
+
+      [["LG", "var(--brand-lg)", d.LG[metric]], ["Samsung", "var(--brand-samsung)", d.Samsung[metric]]].forEach(function (row, j) {
+        var by = y + j * (barH + barGap) + 4;
+        var w = Math.max((row[2] / maxV) * barMaxW, row[2] > 0 ? 3 : 0);
+        var pct = tierTotal > 0 ? (row[2] / tierTotal) * 100 : 0;
+        var g = svgEl("g", { class: "hover-target" });
+        var bg = svgEl("rect", { x: labelW, y: by, width: barMaxW, height: barH, rx: 4, fill: "var(--surface-2)" });
+        var bar = svgEl("rect", { x: labelW, y: by, width: w, height: barH, rx: 4, fill: row[1] });
+        g.appendChild(bg); g.appendChild(bar);
+        svg.appendChild(g);
+        var valLbl = svgEl("text", { x: labelW + Math.min(w + 8, barMaxW - 4), y: by + barH - 4, class: "value-label" });
+        valLbl.textContent = fmtVal(row[2]) + " (" + ((pct > 0 && pct < 1) ? "1% 미만" : pct.toFixed(0) + "%") + ")";
+        if (w > barMaxW - 110) { valLbl.setAttribute("x", labelW + Math.max(w - 6, 6)); valLbl.setAttribute("text-anchor", "end"); valLbl.setAttribute("fill", "var(--accent-ink)"); }
+        svg.appendChild(valLbl);
+
+        var hit = svgEl("rect", { x: labelW, y: by - 1, width: barMaxW, height: barH + 2, fill: "transparent" });
+        hit.addEventListener("mouseenter", function (e) {
+          showTooltip(
+            '<div class="t-title">' + TIER_LABEL[t] + " · " + row[0] + '</div>' +
+            '<div class="t-row"><span>판매수량</span><span>' + fmtInt.format(Math.round(metric === "q" ? row[2] : (row[0] === "LG" ? d.LG.q : d.Samsung.q))) + '개</span></div>' +
+            '<div class="t-row"><span>매출액</span><span>' + fmtM(metric === "rev" ? row[2] : (row[0] === "LG" ? d.LG.rev : d.Samsung.rev)) + '백만원</span></div>' +
+            '<div class="t-row"><span>' + TIER_LABEL[t] + ' 내 비중</span><span>' + pct.toFixed(1) + '%</span></div>',
+            e.clientX, e.clientY
+          );
+          bar.setAttribute("opacity", "0.85");
+        });
+        hit.addEventListener("mouseleave", function () { hideTooltip(); bar.setAttribute("opacity", "1"); });
+        svg.appendChild(hit);
+      });
+
+      if (d.Other[metric] > 0) {
+        var otherPct = tierTotal > 0 ? (d.Other[metric] / tierTotal) * 100 : 0;
+        var otherLbl = svgEl("text", { x: labelW, y: y + groupH - 6, class: "bar-sub-label" });
+        otherLbl.textContent = "기타 브랜드 " + fmtVal(d.Other[metric]) + " (" + ((otherPct > 0 && otherPct < 1) ? "1% 미만" : otherPct.toFixed(0) + "%") + ")";
+        svg.appendChild(otherLbl);
+      }
+    });
+    container.appendChild(svg);
+  }
+
+  function renderSubtitle(data) {
+    var dates = {};
+    RAW.forEach(function (r) { dates[r.d] = true; });
+    var all = Object.keys(dates).sort();
+    if (!all.length) { document.getElementById("subtitle").textContent = "데이터 없음 · 판매 데이터를 넣으면 기간이 표시됩니다"; return; }
+    document.getElementById("subtitle").textContent =
+      "데이터 기간 " + all[0].replace(/-/g, ".") + " ~ " + all[all.length - 1].replace(/-/g, ".") +
+      " · 전체 " + fmtInt.format(RAW.length) + "건 중 " + fmtInt.format(data.length) + "건 표시";
+  }
+
+  function renderFootnote() {
+    var sorted = COMPACT.dates.slice().sort();
+    var seen = {}; RAW.forEach(function (r) { seen[r.d] = true; });
+    var sd = Object.keys(seen).sort();
+    var a = sd[0] || "", b = sd[sd.length - 1] || "";
+    document.getElementById("refRange").textContent = a.replace(/-/g, ".") + " ~ " + b.replace(/-/g, ".");
+    document.getElementById("refLast").textContent = b ? b.replace(/-/g, ".") + " (" + weekdayFmt(b) + ")" : "-";
+    document.getElementById("refRows").textContent = fmtInt.format(RAW.length) + "건";
+    var codes = Object.keys(COMPACT.branches).sort();
+    document.getElementById("refBranches").innerHTML = codes.map(function (c) {
+      var n = COMPACT.branches[c]; return '<span class="ref-chip">' + c + " · " + n + " (" + hqFor(n) + ")</span>";
+    }).join("");
+  }
+
+
+
+
+  function subTrendMonths() {
+    var rows = tvRows(RAW).filter(function (r) {
+      if (r.mk !== "엘지구독") return false;
+      if (state.hq !== "전체" && r.hq !== state.hq) return false;
+      if (state.branch !== "전체" && r.bn !== state.branch) return false;
+      if (state.store !== "전체" && r.sn !== state.store) return false;
+      return true;
+    });
+    var byMonth = {};
+    rows.forEach(function (r) {
+      var spec = specOf(r.m, r.pn);
+      var tier = spec ? SPEC_TIER[spec] : null;
+      var isLifestyle = tier === "라이프스타일";
+      if (!byMonth[r.ym]) byMonth[r.ym] = { lifestyle: 0, led: 0 };
+      var v = state.metric === "q" ? r.q : r.rev;
+      if (isLifestyle) byMonth[r.ym].lifestyle += v; else byMonth[r.ym].led += v;
+    });
+    return Object.keys(byMonth).sort().map(function (ym) {
+      var d = byMonth[ym];
+      return { ym: ym, lifestyle: d.lifestyle, led: d.led, total: d.lifestyle + d.led };
+    });
+  }
+
+  function renderSubTrend() {
+    var months = subTrendMonths();
+    var container = document.getElementById("subTrendChart");
+    container.innerHTML = "";
+    if (!months.length || months.every(function (m) { return m.total === 0; })) {
+      container.innerHTML = '<div class="note" style="padding:8px 0 4px;">선택한 조건에서 엘지구독 판매 데이터가 없습니다.</div>';
+      return;
+    }
+    var W = Math.max(container.clientWidth || 680, 320);
+    var padTop = 10, padBottom = 26, plotH = 200, H = padTop + plotH + padBottom;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "엘지구독 구성 추이" });
+
+    var n = months.length;
+    var gap = 10;
+    var colW = Math.min((W - gap * (n + 1)) / n, 72);
+    var totalColsW = colW * n + gap * (n + 1);
+    var startX = (W - totalColsW) / 2 + gap;
+    var SEG_GAP = 3; // 두 세그먼트 사이 여백(surface gap)
+
+    var fmtVal = function (v) { return state.metric === "q" ? fmtInt.format(Math.round(v)) + "개" : fmtM(v) + "백만원"; };
+
+    months.forEach(function (m, i) {
+      var x = startX + i * (colW + gap);
+      var total = m.total;
+      var lifestylePct = total > 0 ? (m.lifestyle / total) * 100 : 0;
+      var ledPct = total > 0 ? (m.led / total) * 100 : 0;
+      var lifeHRaw = total > 0 ? (m.lifestyle / total) * plotH : 0;
+      var ledHRaw = total > 0 ? (m.led / total) * plotH : 0;
+      var hasBoth = m.lifestyle > 0 && m.led > 0;
+      var lifeH = hasBoth ? Math.max(lifeHRaw - SEG_GAP / 2, 0) : lifeHRaw;
+      var ledH = hasBoth ? Math.max(ledHRaw - SEG_GAP / 2, 0) : ledHRaw;
+
+      var g = svgEl("g", {});
+      var bg = svgEl("rect", { x: x, y: padTop, width: colW, height: plotH, rx: 4, fill: "var(--surface-2)" });
+      g.appendChild(bg);
+
+      if (lifeH > 0) {
+        var lifeRect = svgEl("rect", { x: x, y: padTop, width: colW, height: lifeH, rx: 4, fill: "var(--cat-4)" });
+        g.appendChild(lifeRect);
+        if (lifeH > 18) {
+          var lifeLabel = svgEl("text", {
+            x: x + colW / 2, y: padTop + lifeH / 2 + 4, "text-anchor": "middle",
+            style: "font-size:11.5px; font-weight:700; fill:#fff;"
+          });
+          lifeLabel.textContent = Math.round(lifestylePct) + "%";
+          g.appendChild(lifeLabel);
+        }
+      }
+      if (ledH > 0) {
+        var ledRect = svgEl("rect", { x: x, y: padTop + plotH - ledH, width: colW, height: ledH, rx: 4, fill: "var(--cat-1)" });
+        g.appendChild(ledRect);
+        if (ledH > 18) {
+          var ledLabel = svgEl("text", {
+            x: x + colW / 2, y: padTop + plotH - ledH / 2 + 4, "text-anchor": "middle",
+            style: "font-size:11.5px; font-weight:700; fill:#fff;"
+          });
+          ledLabel.textContent = Math.round(ledPct) + "%";
+          g.appendChild(ledLabel);
+        }
+      }
+
+      var monthLabel = svgEl("text", {
+        x: x + colW / 2, y: padTop + plotH + 18, "text-anchor": "middle", class: "bar-sub-label"
+      });
+      monthLabel.textContent = parseInt(m.ym.slice(5, 7), 10) + "월";
+      g.appendChild(monthLabel);
+
+      var hit = svgEl("rect", { x: x, y: padTop, width: colW, height: plotH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        showTooltip(
+          '<div class="t-title">' + parseInt(m.ym.slice(5, 7), 10) + "월</div>" +
+          '<div class="t-row"><span>라이프스타일</span><span>' + fmtVal(m.lifestyle) + " (" + lifestylePct.toFixed(1) + "%)</span></div>" +
+          '<div class="t-row"><span>LED</span><span>' + fmtVal(m.led) + " (" + ledPct.toFixed(1) + "%)</span></div>" +
+          '<div class="t-row"><span>합계</span><span>' + fmtVal(total) + "</span></div>",
+          e.clientX, e.clientY
+        );
+        bg.setAttribute("opacity", "0.7");
+      });
+      hit.addEventListener("mouseleave", function () { hideTooltip(); bg.setAttribute("opacity", "1"); });
+      g.appendChild(hit);
+
+      svg.appendChild(g);
+    });
+
+    container.appendChild(svg);
+  }
+
+  function sumBy(rows, keyFn) {
+    var m = {};
+    rows.forEach(function (r) {
+      var k = keyFn(r); if (k === null || k === undefined) return;
+      var o = m[k] || (m[k] = { q: 0, rev: 0, profit: 0, subQ: 0, subRev: 0 });
+      o.q += r.q; o.rev += r.rev; o.profit += r.profit;
+      if (r.sub) { o.subQ += r.q; o.subRev += r.subRev || 0; }
+    });
+    return m;
+  }
+  function pctSpan(cur, py) {
+    var p = yoyPct(cur, py);
+    if (p === null || !isFinite(p)) return '<span class="ux-na">-</span>';
+    return '<span class="' + (p >= 0 ? "delta-up" : "delta-down") + '">' + deltaText(p) + "</span>";
+  }
+  function marginText(profit, rev) { return rev > 0 ? (profit / rev * 100).toFixed(1) + "%" : '<span class="ux-na">-</span>'; }
+  function barCell(v, max, label) {
+    var w = max > 0 ? Math.max(Math.round(v / max * 70), v > 0 ? 2 : 0) : 0;
+    return '<div class="ux-bar"><span style="width:' + w + 'px"></span><em>' + label + "</em></div>";
+  }
+  function esc2(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function datesInScope() {
+    return COMPACT.dates.filter(function (d) { return inMonths(d.slice(0, 7)); });
+  }
+  var WD = ["일", "월", "화", "수", "목", "금", "토"];
+
+  function renderInsights(data, pyData) {
+    var wrap = document.getElementById("insightWrap");
+    var qty = 0, rev = 0, profit = 0, subQ = 0, subRev = 0, retQ = 0, retRev = 0;
+    data.forEach(function (r) {
+      qty += r.q; rev += r.rev; profit += r.profit;
+      if (r.sub) { subQ += r.q; subRev += r.subRev || 0; }
+      if (r.q < 0) { retQ += r.q; retRev += r.rev; }
+    });
+    var days = datesInScope();
+    var perDay = days.length ? qty / days.length : 0;
+    var proj = "";
+    if (state.months.length === 1 && days.length) {
+      var ym = state.months[0], y = +ym.slice(0, 4), m = +ym.slice(5, 7), dim = new Date(y, m, 0).getDate();
+      var lastYm = (COMPACT.dates[COMPACT.dates.length - 1] || "").slice(0, 7);
+      if (ym === lastYm && days.length < dim) proj = '<br>월말 환산 약 <b>' + fmtInt.format(Math.round(perDay * dim)) + "개</b> (일평균 기준)";
+    }
+
+    var byD = sumBy(data, function (r) { return r.d; });
+    var peakD = Object.keys(byD).sort(function (a, b) { return byD[b].q - byD[a].q; })[0];
+
+    var models = aggregateModelRows(data).sort(function (a, b) { return b.d.q - a.d.q; });
+    var topM = models[0];
+
+    var byB = sumBy(data, function (r) { return r.bn; });
+    var bKeys = Object.keys(byB).sort(function (a, b) { return byB[b].q - byB[a].q; });
+    var byS = sumBy(data, function (r) { return r.sn; });
+    var sKeys = Object.keys(byS).sort(function (a, b) { return byS[b].q - byS[a].q; });
+
+    var tvQ = 0, premQ = 0;
+    tvRows(data).forEach(function (r) {
+      var sp = specOf(r.m, r.pn), tier = sp ? SPEC_TIER[sp] : null;
+      if (!tier) return;
+      tvQ += r.q; if (tier === "프리미엄") premQ += r.q;
+    });
+    var pyQty = 0; pyData.forEach(function (r) { pyQty += r.q; });
+
+    var tiles = [
+      { c: "#4f6df5", l: "매출이익률", v: rev > 0 ? (profit / rev * 100).toFixed(1) + "<small>%</small>" : "-", s: "이익 <b>" + fmtM(profit) + "백만원</b> / 매출 " + fmtM(rev) + "백만원" },
+      { c: "#18a68b", l: "일평균 판매", v: fmtInt.format(Math.round(perDay)) + "<small>개/일</small>", s: "기간 <b>" + days.length + "일</b> 기준" + (pyQty > 0 ? "<br>전년동기 대비 " + (qty - pyQty >= 0 ? "+" : "−") + fmtInt.format(Math.abs(Math.round(qty - pyQty))) + "개" : "") + proj },
+      { c: "#f7a747", l: "최다 판매일", v: peakD ? dateFmt(peakD) + "<small>(" + weekdayFmt(peakD) + ")</small>" : "-", s: peakD ? "<b>" + fmtInt.format(Math.round(byD[peakD].q)) + "개</b> · 매출 " + fmtM(byD[peakD].rev) + "백만원" : "" },
+      { c: "#9a73e6", l: "판매 1위 모델", v: topM ? esc2(topM.model) : "-", s: topM ? esc2(topM.d.name) + "<br><b>" + fmtInt.format(Math.round(topM.d.q)) + "개</b> · " + esc2(topM.d.mk) : "" },
+      { c: "#e35d6a", l: "구독 판매 비중", v: qty > 0 ? (subQ / qty * 100).toFixed(1) + "<small>%</small>" : "-", s: "구독 <b>" + fmtInt.format(Math.round(subQ)) + "개</b><br>정가환산 " + fmtM(subRev) + "백만원 (매출 별도)" },
+      { c: "#2a78d6", l: "프리미엄 비중 (LED TV)", v: tvQ > 0 ? (premQ / tvQ * 100).toFixed(1) + "<small>%</small>" : "-", s: "LED TV " + fmtInt.format(Math.round(tvQ)) + "개 중 <b>" + fmtInt.format(Math.round(premQ)) + "개</b>" },
+      { c: "#12ab91", l: "판매 1위 지부", v: bKeys[0] ? esc2(bKeys[0]) : "-", s: bKeys[0] ? "<b>" + fmtInt.format(Math.round(byB[bKeys[0]].q)) + "개</b> · 비중 " + (qty ? (byB[bKeys[0]].q / qty * 100).toFixed(0) : 0) + "%<br>1위 지점 " + esc2(sKeys[0] || "-") + " (" + fmtInt.format(Math.round((byS[sKeys[0]] || { q: 0 }).q)) + "개)" : "" },
+      { c: "#8693a8", l: "취소·정정 차감", v: fmtInt.format(Math.round(-retQ)) + "<small>개</small>", s: "음수(취소·정정) 행 합계 · 매출 <b>−" + fmtM(Math.abs(retRev)) + "백만원</b><br>이미 위 합계에서 차감됨" }
+    ];
+    wrap.innerHTML = '<div class="ux-section-title">핵심 인사이트 <span class="ux-pill">상단 필터 반영</span></div><div class="insights">' +
+      tiles.map(function (t) {
+        return '<div class="insight" style="--c:' + t.c + '"><div class="i-label"><i></i>' + t.l + '</div><div class="i-value" title="' + t.v.replace(/<[^>]+>/g, "") + '">' + t.v + '</div><div class="i-sub">' + t.s + "</div></div>";
+      }).join("") + "</div>";
+  }
+
+  function renderWeekday(data) {
+    var container = document.getElementById("weekdayChart");
+    var metric = state.metric;
+    var days = datesInScope();
+    var cnt = [0, 0, 0, 0, 0, 0, 0];
+    days.forEach(function (d) { cnt[new Date(d + "T00:00:00").getDay()]++; });
+    var sum = [0, 0, 0, 0, 0, 0, 0], sq = [0, 0, 0, 0, 0, 0, 0], sr = [0, 0, 0, 0, 0, 0, 0];
+    data.forEach(function (r) { var w = new Date(r.d + "T00:00:00").getDay(); sq[w] += r.q; sr[w] += r.rev; });
+    var order = [1, 2, 3, 4, 5, 6, 0];
+    var avg = order.map(function (w) { var t = metric === "q" ? sq[w] : sr[w]; return cnt[w] ? t / cnt[w] : 0; });
+    var maxV = Math.max.apply(null, avg.concat([1]));
+    var peakI = avg.indexOf(Math.max.apply(null, avg));
+    var fmtV = function (v) { return metric === "q" ? fmtInt.format(Math.round(v)) + "개" : fmtM(v) + "백만원"; };
+    document.getElementById("weekdayNote").textContent = "선택 기간 요일별 일평균 " + (metric === "q" ? "판매수량" : "매출액") + " · 가장 많이 팔리는 요일: " + WD[order[peakI]] + "요일 (" + fmtV(avg[peakI]) + ")";
+    container.innerHTML = "";
+    var W = Math.max(container.clientWidth || 680, 320), padTop = 26, plotH = 170, padBottom = 30, H = padTop + plotH + padBottom;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "요일별 판매 패턴" });
+    var n = 7, gap = 14, colW = Math.min((W - gap * (n + 1)) / n, 96), total = colW * n + gap * (n + 1), x0 = (W - total) / 2 + gap;
+    svg.appendChild(svgEl("line", { x1: 0, x2: W, y1: padTop + plotH, y2: padTop + plotH, class: "axis-line" }));
+    order.forEach(function (w, i) {
+      var x = x0 + i * (colW + gap), h = Math.max(avg[i] / maxV * plotH, avg[i] > 0 ? 3 : 0), y = padTop + plotH - h;
+      var isPeak = i === peakI;
+      var g = svgEl("g", { class: "hover-target" });
+      g.appendChild(svgEl("rect", { x: x, y: padTop, width: colW, height: plotH, rx: 6, fill: "var(--surface-2)" }));
+      var bar = svgEl("rect", { x: x, y: y, width: colW, height: h, rx: 6, fill: (w === 0 || w === 6) ? "var(--cat-2)" : "var(--cat-1)", opacity: isPeak ? 1 : 0.78 });
+      g.appendChild(bar);
+      svg.appendChild(g);
+      var vl = svgEl("text", { x: x + colW / 2, y: Math.max(y - 7, 12), "text-anchor": "middle", class: "value-label" });
+      vl.textContent = metric === "q" ? (avg[i] >= 10 ? Math.round(avg[i]) : avg[i].toFixed(1)) : fmtM(avg[i]);
+      svg.appendChild(vl);
+      var xl = svgEl("text", { x: x + colW / 2, y: padTop + plotH + 19, "text-anchor": "middle", class: "bar-name-label", style: (w === 0 || w === 6) ? "fill:var(--cat-2);" : "" });
+      xl.textContent = WD[w]; svg.appendChild(xl);
+      var hit = svgEl("rect", { x: x, y: padTop, width: colW, height: plotH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        showTooltip('<div class="t-title">' + WD[w] + "요일</div>" +
+          '<div class="t-row"><span>일평균</span><span>' + fmtV(avg[i]) + "</span></div>" +
+          '<div class="t-row"><span>합계 판매수량</span><span>' + fmtInt.format(Math.round(sq[w])) + "개</span></div>" +
+          '<div class="t-row"><span>합계 매출액</span><span>' + fmtM(sr[w]) + "백만원</span></div>" +
+          '<div class="t-row"><span>해당 요일 일수</span><span>' + cnt[w] + "일</span></div>", e.clientX, e.clientY);
+      });
+      hit.addEventListener("mouseleave", hideTooltip);
+      svg.appendChild(hit);
+    });
+    container.appendChild(svg);
+  }
+
+  (function () {
+    var mc = document.getElementById("modelChart").closest(".card");
+    var w = document.createElement("div"); w.className = "ux-screen"; w.id = "screenModel";
+    mc.parentNode.insertBefore(w, mc); w.appendChild(mc);
+    w.insertAdjacentHTML("beforeend",
+      '<div class="card" id="modelTableCard"><div class="card-head"><div><h2>모델별 상세 실적 TOP 20</h2><div class="note" id="modelTableNote"></div></div></div>' +
+      '<div class="ux-table-wrap"><table class="ux-table"><thead><tr><th class="t-left">순위</th><th class="t-left">모델</th><th class="t-left">메이커</th><th>판매수량</th><th>매출액(백만)</th><th>매출이익(백만)</th><th>이익률</th><th>평균단가(백만)</th></tr></thead><tbody id="modelTableBody"></tbody></table></div></div>');
+  })();
+  function renderModelTable(data) {
+    var itemFilter = state.modelItem;
+    var rows = itemFilter === "전체" ? data : data.filter(function (r) { return r.iname === itemFilter; });
+    var models = aggregateModelRows(rows).sort(function (a, b) { return b.d[state.metric] - a.d[state.metric]; });
+    var top = models.slice(0, 20);
+    document.getElementById("modelTableNote").textContent = "전체 " + models.length + "개 모델 중 " + (state.metric === "q" ? "판매수량" : "매출액") + " 기준 상위 · 위 순위 카드의 품목 선택이 함께 적용됩니다";
+    var maxQ = top.reduce(function (m, x) { return Math.max(m, x.d.q); }, 0);
+    document.getElementById("modelTableBody").innerHTML = top.map(function (x, i) {
+      var d = x.d, color = brandColorMap[d.mk] || "var(--ink-muted)";
+      return "<tr><td class='t-left'><span class='rank'>" + (i + 1) + "</span></td>" +
+        "<td class='t-left t-name'><b>" + esc2(x.model) + "</b>" + (d.sub ? " <span class='ux-pill'>구독</span>" : "") + "<small>" + esc2(d.name) + "</small></td>" +
+        "<td class='t-left'><span class='mk-dot' style='background:" + color + "'></span>" + esc2(d.mk) + "</td>" +
+        "<td>" + barCell(d.q, maxQ, fmtInt.format(Math.round(d.q))) + "</td>" +
+        "<td>" + (d.sub ? "<span class='ux-na'>구독</span>" : fmtM(d.rev)) + "</td><td>" + (d.sub ? "<span class='ux-na'>-</span>" : fmtM(d.profit)) + "</td>" +
+        "<td>" + (d.sub ? "<span class='ux-na'>-</span>" : marginText(d.profit, d.rev)) + "</td>" +
+        "<td>" + (d.sub || d.q === 0 ? "<span class='ux-na'>-</span>" : fmtM(d.rev / d.q)) + "</td></tr>";
+    }).join("") || "<tr><td colspan='8' class='t-left'>조건에 맞는 모델이 없습니다.</td></tr>";
+  }
+
+  function renderOrg(data, pyData) {
+    var totalQ = data.reduce(function (s, r) { return s + r.q; }, 0) || 1;
+    var cur = sumBy(data, function (r) { return r.bn; });
+    var py = sumBy(pyData, function (r) { return r.bn; });
+    var hqOf = {}; data.forEach(function (r) { hqOf[r.bn] = r.hq; });
+    var keys = Object.keys(cur).sort(function (a, b) { return cur[b][state.metric] - cur[a][state.metric]; });
+    var maxQ = keys.reduce(function (m, k) { return Math.max(m, cur[k].q); }, 0);
+    var tot = { q: 0, rev: 0, profit: 0, subQ: 0, pq: 0, prev: 0 };
+    var body = keys.map(function (k) {
+      var c = cur[k], p = py[k] || { q: 0, rev: 0 };
+      tot.q += c.q; tot.rev += c.rev; tot.profit += c.profit; tot.subQ += c.subQ; tot.pq += p.q; tot.prev += p.rev;
+      return "<tr><td class='t-left'><b>" + esc2(k) + "</b></td><td class='t-left'>" + esc2(hqOf[k] || "") + "</td>" +
+        "<td>" + barCell(c.q, maxQ, fmtInt.format(Math.round(c.q))) + "</td><td>" + (c.q / totalQ * 100).toFixed(1) + "%</td><td>" + pctSpan(c.q, p.q) + "</td>" +
+        "<td>" + fmtM(c.rev) + "</td><td>" + pctSpan(c.rev, p.rev) + "</td><td>" + fmtM(c.profit) + "</td><td>" + marginText(c.profit, c.rev) + "</td>" +
+        "<td>" + (c.subQ ? fmtInt.format(Math.round(c.subQ)) : "<span class='ux-na'>-</span>") + "</td></tr>";
+    }).join("");
+    document.getElementById("orgBranchBody").innerHTML = body || "<tr><td colspan='10' class='t-left'>데이터가 없습니다.</td></tr>";
+    document.getElementById("orgBranchFoot").innerHTML = keys.length > 1 ? "<tr><td class='t-left'>합계</td><td></td><td>" + fmtInt.format(Math.round(tot.q)) + "</td><td>100%</td><td>" + pctSpan(tot.q, tot.pq) + "</td><td>" + fmtM(tot.rev) + "</td><td>" + pctSpan(tot.rev, tot.prev) + "</td><td>" + fmtM(tot.profit) + "</td><td>" + marginText(tot.profit, tot.rev) + "</td><td>" + (tot.subQ ? fmtInt.format(Math.round(tot.subQ)) : "-") + "</td></tr>" : "";
+
+    var curS = sumBy(data, function (r) { return r.sn; });
+    var pyS = sumBy(pyData, function (r) { return r.sn; });
+    var brOf = {}; data.forEach(function (r) { brOf[r.sn] = r.bn; });
+    var sKeys = Object.keys(curS).sort(function (a, b) { return curS[b][state.metric] - curS[a][state.metric]; });
+    var top = sKeys.slice(0, 15);
+    var maxS = top.reduce(function (m, k) { return Math.max(m, curS[k].q); }, 0);
+    document.getElementById("orgStoreNote").textContent = "전체 " + sKeys.length + "개 지점 중 " + (state.metric === "q" ? "판매수량" : "매출액") + " 기준 상위 " + top.length + "개";
+    document.getElementById("orgStoreBody").innerHTML = top.map(function (k, i) {
+      var c = curS[k], p = pyS[k] || { q: 0, rev: 0 };
+      return "<tr><td class='t-left'><span class='rank'>" + (i + 1) + "</span></td><td class='t-left'><b>" + esc2(k) + "</b></td><td class='t-left'>" + esc2(brOf[k] || "") + "</td>" +
+        "<td>" + barCell(c.q, maxS, fmtInt.format(Math.round(c.q))) + "</td><td>" + (c.q / totalQ * 100).toFixed(1) + "%</td><td>" + pctSpan(c.q, p.q) + "</td>" +
+        "<td>" + fmtM(c.rev) + "</td><td>" + pctSpan(c.rev, p.rev) + "</td><td>" + fmtM(c.profit) + "</td><td>" + (c.subQ ? fmtInt.format(Math.round(c.subQ)) : "<span class='ux-na'>-</span>") + "</td></tr>";
+    }).join("") || "<tr><td colspan='10' class='t-left'>데이터가 없습니다.</td></tr>";
+  }
+
+  function renderMonthly() {
+    var rows = RAW.filter(matchesScope), pyRows = PY_RAW.filter(matchesScope);
+    var cur = sumBy(rows, function (r) { return r.ym; }), py = sumBy(pyRows, function (r) { return r.ym; });
+    var lastDate = COMPACT.dates[COMPACT.dates.length - 1] || "", lastYm = lastDate.slice(0, 7);
+    var yms = Object.keys(cur).sort();
+    var maxQ = yms.reduce(function (m, k) { return Math.max(m, cur[k].q); }, 0);
+    var tot = { q: 0, rev: 0, profit: 0, subQ: 0, pq: 0, prev: 0, days: 0 };
+    var selT = { q: 0, rev: 0, profit: 0, subQ: 0, pq: 0, prev: 0, days: 0, n: 0 };
+    var body = yms.map(function (ym) {
+      var c = cur[ym], p = py[ym] || { q: 0, rev: 0 };
+      var days = COMPACT.dates.filter(function (d) { return d.slice(0, 7) === ym; }).length;
+      var y = +ym.slice(0, 4), m = +ym.slice(5, 7), dim = new Date(y, m, 0).getDate();
+      var live = ym === lastYm && days < dim;
+      tot.q += c.q; tot.rev += c.rev; tot.profit += c.profit; tot.subQ += c.subQ; tot.pq += p.q; tot.prev += p.rev; tot.days += days;
+      var isSel = state.months.length > 0 && state.months.indexOf(ym) >= 0;
+      if (isSel) { selT.q += c.q; selT.rev += c.rev; selT.profit += c.profit; selT.subQ += c.subQ; selT.pq += p.q; selT.prev += p.rev; selT.days += days; selT.n++; }
+      return "<tr" + (isSel ? " class='ux-row-sel'" : "") + "><td class='t-left'><b>" + monthLabel(ym) + "</b> " + (live ? "<span class='ux-pill live'>진행중 ~" + dateFmt(lastDate) + "</span>" : "") + "</td>" +
+        "<td>" + barCell(c.q, maxQ, fmtInt.format(Math.round(c.q))) + "</td><td>" + (p.q ? fmtInt.format(Math.round(p.q)) : "<span class='ux-na'>-</span>") + "</td><td>" + pctSpan(c.q, p.q) + "</td>" +
+        "<td>" + fmtM(c.rev) + "</td><td>" + (p.rev ? fmtM(p.rev) : "<span class='ux-na'>-</span>") + "</td><td>" + pctSpan(c.rev, p.rev) + "</td>" +
+        "<td>" + fmtM(c.profit) + "</td><td>" + marginText(c.profit, c.rev) + "</td><td>" + (c.q ? fmtM(c.rev / c.q) : "-") + "</td>" +
+        "<td>" + (days ? fmtInt.format(Math.round(c.q / days)) : "-") + "</td><td>" + (c.subQ ? fmtInt.format(Math.round(c.subQ)) : "<span class='ux-na'>-</span>") + "</td></tr>";
+    }).join("");
+    document.getElementById("monthBody").innerHTML = body || "<tr><td colspan='12' class='t-left'>데이터가 없습니다.</td></tr>";
+    var selRow = selT.n > 1 ? "<tr class='ux-row-sel'><td class='t-left'><b>선택 기간 합계</b> <span class='ux-pill'>" + periodLabel() + "</span></td><td>" + fmtInt.format(Math.round(selT.q)) + "</td><td>" + fmtInt.format(Math.round(selT.pq)) + "</td><td>" + pctSpan(selT.q, selT.pq) + "</td><td>" + fmtM(selT.rev) + "</td><td>" + fmtM(selT.prev) + "</td><td>" + pctSpan(selT.rev, selT.prev) + "</td><td>" + fmtM(selT.profit) + "</td><td>" + marginText(selT.profit, selT.rev) + "</td><td>" + (selT.q ? fmtM(selT.rev / selT.q) : "-") + "</td><td>" + (selT.days ? fmtInt.format(Math.round(selT.q / selT.days)) : "-") + "</td><td>" + (selT.subQ ? fmtInt.format(Math.round(selT.subQ)) : "-") + "</td></tr>" : "";
+    document.getElementById("monthFoot").innerHTML = selRow + "<tr><td class='t-left'>합계</td><td>" + fmtInt.format(Math.round(tot.q)) + "</td><td>" + fmtInt.format(Math.round(tot.pq)) + "</td><td>" + pctSpan(tot.q, tot.pq) + "</td><td>" + fmtM(tot.rev) + "</td><td>" + fmtM(tot.prev) + "</td><td>" + pctSpan(tot.rev, tot.prev) + "</td><td>" + fmtM(tot.profit) + "</td><td>" + marginText(tot.profit, tot.rev) + "</td><td>" + (tot.q ? fmtM(tot.rev / tot.q) : "-") + "</td><td>" + (tot.days ? fmtInt.format(Math.round(tot.q / tot.days)) : "-") + "</td><td>" + (tot.subQ ? fmtInt.format(Math.round(tot.subQ)) : "-") + "</td></tr>";
+  }
+
+  var SINGLE = {"months": [], "buckets": [], "bkdesc": {}, "classes": [], "rows": [], "comp_single": {}, "companions": {}, "onlyDemo": 0, "multi_slips": 0, "otherpm_slips": 0, "branches": {}, "branchM": {}, "asof": "", "scope": "", "allModels": []};
+  var SALL = ["202601","202602","202603","202604","202605","202606","202607","202608","202609","202610"];
+  var singleState = { months: SALL.slice(), metric: "q" };
+  var SM_LABEL = { "202601": "1월", "202602": "2월", "202603": "3월", "202604": "4월", "202605": "5월", "202606": "6월", "202607": "7월", "202608": "8월", "202609": "9월", "202610": "10월" };
+  function sInScope(ym, per) { return per === "all" ? true : Array.isArray(per) ? per.indexOf(ym) >= 0 : ym === per; }
+  function sPeriodLabel(per) {
+    var ms = SALL.filter(function (m) { return sInScope(m, per); });
+    if (ms.length === SALL.length) return "1~10월 합계";
+    var idx = ms.map(function (m) { return SALL.indexOf(m); });
+    var contiguous = idx.every(function (v, i) { return i === 0 || v === idx[i - 1] + 1; });
+    var nums = ms.map(function (m) { return parseInt(m.slice(4), 10); });
+    if (nums.length === 1) return nums[0] + "월" + (nums[0] === 10 ? "" : "");
+    return (contiguous ? nums[0] + "~" + nums[nums.length - 1] + "월" : nums.join("·") + "월") + " (" + nums.length + "개월)";
+  }
+  function sVal(bk, cls, period, metric) {
+    var t = 0;
+    SINGLE.rows.forEach(function (r) {
+      if (r.cls !== cls) return;
+      if (bk && r.bk !== bk) return;
+      if (!sInScope(r.ym, period)) return;
+      t += metric === "q" ? r.q : r.rev / 1000000;
+    });
+    return t;
+  }
+  function sFmt(v, metric) { return metric === "q" ? fmtInt.format(Math.round(v)) : fmtM(v * 1000000); }
+  function renderSingle() {
+    if (!document.getElementById("singleTiles")) return;
+    var per = singleState.months, mt = singleState.metric;
+    var perLabel = sPeriodLabel(per);
+    var unit = mt === "q" ? "대" : "백만원";
+    var tq1 = sVal(null, "단품", per, "q"), tq2 = sVal(null, "다품목", per, "q");
+    var tr1 = sVal(null, "단품", per, "rev"), tr2 = sVal(null, "다품목", per, "rev");
+    var tot = tq1 + tq2, share = tot > 0 ? tq1 / tot * 100 : 0;
+
+    var bestBk = null, bestShare = -1;
+    SINGLE.buckets.forEach(function (bk) {
+      var a = sVal(bk, "단품", per, "q"), b = sVal(bk, "다품목", per, "q");
+      if (a + b >= 10 && b / (a + b) > bestShare) { bestShare = b / (a + b); bestBk = bk; }
+    });
+    var tiles = [
+      { c: "#4f6df5", l: "삼성 TV 판매 (단품+다품목)", v: fmtInt.format(Math.round(tot)) + "<small>대</small>", s: perLabel + " · 실매출 <b>" + fmtM((tr1 + tr2) * 1000000) + "백만원</b>" },
+      { c: "#2a78d6", l: "단품", v: fmtInt.format(Math.round(tq1)) + "<small>대 · " + share.toFixed(0) + "%</small>", s: "TV만 또는 TV+악세서리만 있는 전표<br>실매출 <b>" + fmtM(tr1 * 1000000) + "백만원</b>" },
+      { c: "#f1924f", l: "다품목", v: fmtInt.format(Math.round(tq2)) + "<small>대 · " + (tot > 0 ? (100 - share).toFixed(0) : 0) + "%</small>", s: "TV·악세서리 외 품목이 같은 전표에 있는 경우<br>실매출 <b>" + fmtM(tr2 * 1000000) + "백만원</b>" },
+      { c: "#9a73e6", l: "다품목 비중 최고 인치", v: bestBk ? esc2(bestBk) : "-", s: bestBk ? "다품목 <b>" + (bestShare * 100).toFixed(0) + "%</b> (판매 10대 이상 인치만 비교)" : "" }
+    ];
+    document.getElementById("singleTiles").innerHTML = '<div class="insights">' + tiles.map(function (t) {
+      return '<div class="insight" style="--c:' + t.c + '"><div class="i-label"><i></i>' + t.l + '</div><div class="i-value">' + t.v + '</div><div class="i-sub">' + t.s + "</div></div>";
+    }).join("") + "</div>";
+
+    var container = document.getElementById("singleInchChart");
+    container.innerHTML = "";
+    var rows = SINGLE.buckets.map(function (bk) { return { bk: bk, a: sVal(bk, "단품", per, mt), b: sVal(bk, "다품목", per, mt) }; });
+    var maxT = Math.max.apply(null, rows.map(function (r) { return Math.max(r.a, 0) + Math.max(r.b, 0); }).concat([1]));
+    var rowH = 40, padTop = 4;
+    var W = Math.max(container.clientWidth || 680, 300), H = rows.length * rowH + padTop;
+    var cm = W < 520, labW = cm ? 62 : 92, rightW = cm ? 92 : 150;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", height: H, role: "img", "aria-label": "인치별 단품·다품목 판매" });
+    var barW = W - labW - rightW;
+    rows.forEach(function (r, i) {
+      var y = padTop + i * rowH, a = Math.max(r.a, 0), b = Math.max(r.b, 0), t = a + b;
+      var lab = svgEl("text", { x: 0, y: y + 22, class: "bar-name-label" }); lab.textContent = r.bk.replace("기타(100형 등)", cm ? "100형~" : "기타(100형~)"); svg.appendChild(lab);
+      var bg = svgEl("rect", { x: labW, y: y + 10, width: barW, height: 18, rx: 6, fill: "var(--surface-2)" }); svg.appendChild(bg);
+      var wa = a / maxT * barW, wb = b / maxT * barW;
+      var g = svgEl("g", { class: "hover-target" });
+      if (wa > 0) g.appendChild(svgEl("rect", { x: labW, y: y + 10, width: Math.max(wa, 2), height: 18, rx: 6, fill: "var(--cat-1)" }));
+      if (wb > 0) g.appendChild(svgEl("rect", { x: labW + wa + (wa > 0 ? 2 : 0), y: y + 10, width: Math.max(wb - (wa > 0 ? 2 : 0), 2), height: 18, rx: 6, fill: "var(--cat-2)" }));
+      svg.appendChild(g);
+      if (wa > 34) { var ta = svgEl("text", { x: labW + wa / 2, y: y + 23.5, "text-anchor": "middle", style: "font-size:11px;font-weight:700;fill:#fff;" }); ta.textContent = sFmt(r.a, mt); svg.appendChild(ta); }
+      if (wb > 34) { var tb = svgEl("text", { x: labW + wa + wb / 2, y: y + 23.5, "text-anchor": "middle", style: "font-size:11px;font-weight:700;fill:#fff;" }); tb.textContent = sFmt(r.b, mt); svg.appendChild(tb); }
+      var rt = svgEl("text", { x: W, y: y + 23, "text-anchor": "end", class: "value-label" });
+      rt.textContent = t > 0 ? (cm ? sFmt(t, mt) + " · " + (a / t * 100).toFixed(0) + "%" : sFmt(t, mt) + unit + " · 단품 " + (a / t * 100).toFixed(0) + "%") : "판매 없음";
+      svg.appendChild(rt);
+      var hit = svgEl("rect", { x: 0, y: y, width: W, height: rowH, fill: "transparent" });
+      hit.addEventListener("mouseenter", function (e) {
+        showTooltip('<div class="t-title">' + r.bk + " (" + SINGLE.bkdesc[r.bk] + "인치)</div>" +
+          '<div class="t-row"><span>단품</span><span>' + sFmt(r.a, mt) + unit + "</span></div>" +
+          '<div class="t-row"><span>다품목</span><span>' + sFmt(r.b, mt) + unit + "</span></div>" +
+          '<div class="t-row"><span>단품 비중</span><span>' + (t > 0 ? (a / t * 100).toFixed(1) + "%" : "-") + "</span></div>", e.clientX, e.clientY);
+      });
+      hit.addEventListener("mouseleave", hideTooltip);
+      svg.appendChild(hit);
+    });
+    container.appendChild(svg);
+    document.getElementById("singleChartTitle").textContent = "인치별 단품·다품목 · " + perLabel + " · " + (mt === "q" ? "판매 대수" : "실매출액 백만원");
+
+    var head = "<tr><th class='t-left' rowspan='2'>인치구간</th>";
+    SINGLE.months.forEach(function (m) { head += "<th colspan='2' style='text-align:center" + (sInScope(m, per) ? ";background:#eef2ff" : "") + "'>" + SM_LABEL[m] + (m === "202610" ? "" : "") + "</th>"; });
+    head += "<th colspan='3' style='text-align:center'>선택 기간 합계</th></tr><tr>";
+    SINGLE.months.forEach(function () { head += "<th>단품</th><th>다품목</th>"; });
+    head += "<th>단품</th><th>다품목</th><th>단품 비중</th></tr>";
+    var body = SINGLE.buckets.map(function (bk) {
+      var h = "<tr><td class='t-left'><b>" + bk + "</b> <small style='color:#8a98b4'>" + SINGLE.bkdesc[bk] + "</small></td>";
+      SINGLE.months.forEach(function (m) { h += "<td>" + sFmt(sVal(bk, "단품", m, mt), mt) + "</td><td>" + sFmt(sVal(bk, "다품목", m, mt), mt) + "</td>"; });
+      var a = sVal(bk, "단품", per, mt), b = sVal(bk, "다품목", per, mt);
+      return h + "<td><b>" + sFmt(a, mt) + "</b></td><td><b>" + sFmt(b, mt) + "</b></td><td>" + (a >= 0 && b >= 0 && a + b > 0 ? (a / (a + b) * 100).toFixed(0) + "%" : "<span class='ux-na'>-</span>") + "</td></tr>";
+    }).join("");
+    var foot = "<tr><td class='t-left'>합계</td>";
+    SINGLE.months.forEach(function (m) { foot += "<td>" + sFmt(sVal(null, "단품", m, mt), mt) + "</td><td>" + sFmt(sVal(null, "다품목", m, mt), mt) + "</td>"; });
+    var A = sVal(null, "단품", per, mt), B = sVal(null, "다품목", per, mt);
+    foot += "<td>" + sFmt(A, mt) + "</td><td>" + sFmt(B, mt) + "</td><td>" + (A + B > 0 ? (A / (A + B) * 100).toFixed(0) + "%" : "-") + "</td></tr>";
+    document.getElementById("singleTable").innerHTML = "<thead>" + head + "</thead><tbody>" + body + "</tbody><tfoot>" + foot + "</tfoot>";
+    document.getElementById("singleTableTitle").textContent = "인치 × 월 상세 (" + (mt === "q" ? "판매 대수" : "실매출액 백만원") + ")";
+
+    var cancelQ = sVal(null, "취소(기간 전 판매분)", per, "q");
+    document.getElementById("singleCancelNote").innerHTML = "취소(기간 전 판매분) <b>" + fmtInt.format(Math.round(cancelQ)) + "대</b>는 자료 기간 이전에 판매된 전표를 취소·정정한 건이라 위 합계에서 분리했습니다. 이를 포함한 순판매 대수는 " + fmtInt.format(Math.round(tot + cancelQ)) + "대입니다.";
+    var comp = SINGLE.companions, ck = Object.keys(comp);
+    document.getElementById("singleCompBody").innerHTML = ck.map(function (k) {
+      return "<tr><td class='t-left'>" + esc2(comp[k].name) + (k === "기타" ? "" : " (" + k + ")") + "</td><td>" + (comp[k].slips == null ? "-" : fmtInt.format(comp[k].slips)) + "</td><td>" + fmtInt.format(comp[k].q) + "</td><td>" + fmtM(comp[k].rev) + "</td></tr>";
+    }).join("") + ("");
+    var mi = SALL.map(function (m) { return sInScope(m, per) ? 1 : 0; });
+    var tm = (SINGLE.allModels || []).map(function (m) {
+      var q = 0, rv = 0, mq = 0; for (var i = 0; i < 10; i++) if (mi[i]) { q += m.sm[i]; rv += m.rm[i]; mq += m.mm[i]; }
+      return { m: m, q: q, rv: rv, mq: mq };
+    }).filter(function (x) { return x.q > 0; }).sort(function (a, b) { return b.q - a.q; }).slice(0, 5);
+    document.getElementById("singleTopNote").textContent = "인치 무관 · 단품 판매 대수 기준 · " + perLabel;
+    document.getElementById("singleTopBody").innerHTML = tm.length ? tm.map(function (x, i) {
+      var t = x.q + x.mq;
+      return "<tr><td class='t-left'><b>" + (i + 1) + ".</b> " + esc2(x.m.model) + "</td><td class='t-left'>" + esc2(x.m.name) + "</td><td>" + x.m.inch + "형</td><td><b>" + fmtInt.format(x.q) + "</b></td><td>" + fmtM(x.rv * 1000000) + "</td><td>" + fmtInt.format(x.mq) + "</td><td>" + (t > 0 && x.mq >= 0 ? (x.q / t * 100).toFixed(0) + "%" : "-") + "</td><td>" + fmtInt.format(x.m.q) + "</td></tr>";
+    }).join("") : "<tr><td class='t-left' colspan='8'>선택한 기간에 단품 판매가 없습니다.</td></tr>";
+    var mrow = "", mA = 0, mB = 0, mC = 0, mRA = 0, mRB = 0;
+    SINGLE.months.forEach(function (m) {
+      var a = sVal(null, "단품", m, "q"), b = sVal(null, "다품목", m, "q"), c = sVal(null, "취소(기간 전 판매분)", m, "q"), ra = sVal(null, "단품", m, "rev"), rb = sVal(null, "다품목", m, "rev");
+      var sel = sInScope(m, per);
+      if (sel) { mA += a; mB += b; mC += c; mRA += ra; mRB += rb; }
+      var sh = a + b > 0 ? a / (a + b) * 100 : 0;
+      mrow += "<tr" + (sel ? " class='ux-row-sel'" : "") + "><td class='t-left'><b>" + SM_LABEL[m] + (m === "202610" ? "" : "") + "</b></td><td><b>" + fmtInt.format(a) + "</b></td><td>" + fmtInt.format(b) + "</td><td>" + fmtInt.format(c) + "</td><td>" + fmtInt.format(a + b + c) + "</td><td><span style='display:inline-block;width:" + Math.round(sh * 0.8) + "px;height:8px;border-radius:4px;background:var(--cat-1);vertical-align:middle;margin-right:6px'></span>" + sh.toFixed(0) + "%</td><td>" + fmtM(ra * 1000000) + "</td><td>" + fmtM(rb * 1000000) + "</td></tr>";
+    });
+    document.getElementById("singleMonthBody").innerHTML = mrow;
+    document.getElementById("singleMonthFoot").innerHTML = "<tr><td class='t-left'>선택 기간 합계</td><td>" + fmtInt.format(mA) + "</td><td>" + fmtInt.format(mB) + "</td><td>" + fmtInt.format(mC) + "</td><td>" + fmtInt.format(mA + mB + mC) + "</td><td>" + (mA + mB > 0 ? (mA / (mA + mB) * 100).toFixed(0) + "%" : "-") + "</td><td>" + fmtM(mRA * 1000000) + "</td><td>" + fmtM(mRB * 1000000) + "</td></tr>";
+    var cs = SINGLE.comp_single;
+    document.getElementById("singleCompNote").innerHTML = "1~10월 전체 기준 · 다품목 전표 <b>" + fmtInt.format(SINGLE.multi_slips) + "</b>건 중 상위 12개 품목 · 단품 전표 구성 — TV만 <b>" + fmtInt.format(cs["TV만"] || 0) + "</b>건 · TV+악세서리 <b>" + fmtInt.format(cs["TV+악세서리"] || 0) + "</b>건";
+    var bagg = {};
+    Object.keys(SINGLE.branchM).forEach(function (b) {
+      var a = 0, d = 0; SALL.forEach(function (m) { if (sInScope(m, per) && SINGLE.branchM[b][m]) { a += SINGLE.branchM[b][m]["단품"]; d += SINGLE.branchM[b][m]["다품목"]; } });
+      bagg[b] = { a: a, d: d };
+    });
+    document.getElementById("singleBranchNote").textContent = perLabel + " · 판매 대수 기준";
+    var bn = Object.keys(bagg).sort(function (x, y) { return (bagg[y].a + bagg[y].d) - (bagg[x].a + bagg[x].d); });
+    document.getElementById("singleBranchBody").innerHTML = bn.map(function (b) {
+      var v = bagg[b], t = v.a + v.d;
+      return "<tr><td class='t-left'><b>" + esc2(b) + "</b></td><td>" + fmtInt.format(v.a) + "</td><td>" + fmtInt.format(v.d) + "</td><td>" + (t > 0 ? (v.a / t * 100).toFixed(0) + "%" : "-") + "</td></tr>";
+    }).join("");
+  }
+  (function () {
+    var sameSet = function (a, b) { return a.length === b.length && a.every(function (x) { return b.indexOf(x) >= 0; }); };
+    var PRE = { all: SALL.slice(), r3: SALL.slice(-3), h1: SALL.slice(0, 6), h2: SALL.slice(6) };
+    function syncBtns() {
+      Array.prototype.forEach.call(document.querySelectorAll("#singleMonths button"), function (x) { x.classList.toggle("active", singleState.months.indexOf(x.getAttribute("data-v")) >= 0); });
+      Array.prototype.forEach.call(document.querySelectorAll("#singlePreset button"), function (x) { x.classList.toggle("active", sameSet(PRE[x.getAttribute("data-v")], singleState.months)); });
+    }
+    var pe = document.getElementById("singlePreset"), me = document.getElementById("singleMonths"), mt = document.getElementById("singleMetric");
+    if (pe) pe.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; singleState.months = PRE[b.getAttribute("data-v")].slice(); syncBtns(); renderSingle(); });
+    if (me) me.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return; var v = b.getAttribute("data-v"), i = singleState.months.indexOf(v);
+      if (i >= 0) { if (singleState.months.length > 1) singleState.months.splice(i, 1); } else { singleState.months.push(v); singleState.months.sort(); }
+      syncBtns(); renderSingle();
+    });
+    if (mt) mt.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return; singleState.metric = b.getAttribute("data-v");
+      Array.prototype.forEach.call(mt.querySelectorAll("button"), function (x) { x.classList.toggle("active", x === b); }); renderSingle();
+    });
+  })();
+
+  var PRICE = {"asof": "", "note": "웹 검색(다나와·에누리·쇼핑몰 상품 페이지)으로 조회한 일반 신품 판매가. 배송비 제외, 카드·멤버십 조건부 혜택가·렌탈·리퍼·직구 제외.", "items": []};
+  function pQuery(m) { return String(m).split(".")[0].split("/")[0]; }
+  function pLinks(q) {
+    var e = encodeURIComponent(q);
+    return '<span class="pl"><a href="https://search.danawa.com/dsearch.php?query=' + e + '" target="_blank" rel="noopener">다나와</a><a href="https://search.shopping.naver.com/search/all?query=' + e + '&sort=price_asc" target="_blank" rel="noopener">네이버</a><a href="https://www.coupang.com/np/search?q=' + e + '&sorter=salePriceAsc" target="_blank" rel="noopener">쿠팡</a><a href="https://www.enuri.com/search.jsp?keyword=' + e + '" target="_blank" rel="noopener">에누리</a></span>';
+  }
+  var prState = { period: "r3" };
+  function fmtWon(v) { return fmtInt.format(Math.round(v)) + "원"; }
+  function renderPrice() {
+    var body = document.getElementById("prBody"); if (!body) return;
+    var yms = {}; RAW.forEach(function (r) { yms[r.ym] = 1; });
+    var last3 = Object.keys(yms).sort().slice(-3);
+    var inScope = function (ym) { return prState.period === "r3" ? last3.indexOf(ym) >= 0 : inMonths(ym); };
+    var per = prState.period === "r3" ? (monthLabel(last3[0]) + "~" + monthLabel(last3[last3.length - 1])) : periodLabel();
+    var agg = {}, meta = {};
+    RAW.forEach(function (r) {
+      if (!meta[r.m]) meta[r.m] = { pn: r.pn, mk: r.mk };
+      if (!matchesScope(r) || !inScope(r.ym)) return;
+      var a = agg[r.m] || (agg[r.m] = { q: 0, rq: 0, rev: 0 });
+      a.q += r.q;
+      if (!r.sub && r.rev !== 0) { a.rq += r.q; a.rev += r.rev; }
+    });
+    var list = PRICE.items.map(function (it) {
+      var a = agg[it.m] || { q: 0, rq: 0, rev: 0 };
+      var our = a.rq > 0 ? a.rev / a.rq * 1.1 : null;
+      return { it: it, q: a.q, our: our, gap: (our != null && it.price) ? (our - it.price) / it.price : null };
+    }).sort(function (a, b) { return b.q - a.q; });
+    var known = list.filter(function (x) { return x.it.price; }), cmp = list.filter(function (x) { return x.gap != null; });
+    var higher = cmp.filter(function (x) { return x.gap > 0; }).length;
+    var avgGap = cmp.length ? cmp.reduce(function (t, x) { return t + x.gap; }, 0) / cmp.length : null;
+    var tiles = [
+      { c: "#4f6df5", l: "조회 모델", v: list.length + "<small>개</small>", s: "가격 확인 <b>" + known.length + "</b>개 · 미확인 " + (list.length - known.length) + "개" },
+      { c: "#d6334d", l: "우리가 더 비쌈", v: higher + "<small>개</small>", s: "비교 가능 " + cmp.length + "개 중 · " + esc2(per) },
+      { c: "#18a68b", l: "우리가 더 저렴", v: (cmp.length - higher) + "<small>개</small>", s: "온라인 최저가보다 낮게 판매" },
+      { c: "#9a73e6", l: "평균 차이", v: avgGap == null ? "-" : (avgGap > 0 ? "+" : "") + (avgGap * 100).toFixed(0) + "<small>%</small>", s: "모델 단순 평균 · (+)는 우리가 비쌈" }
+    ];
+    document.getElementById("prTiles").innerHTML = '<div class="insights">' + tiles.map(function (t) { return '<div class="insight" style="--c:' + t.c + '"><div class="i-label"><i></i>' + t.l + '</div><div class="i-value">' + t.v + '</div><div class="i-sub">' + t.s + "</div></div>"; }).join("") + "</div>";
+    document.getElementById("prNote").textContent = "최저가 조회일 " + PRICE.asof + " · 판매량·평균 판매가 기간: " + per + " (모델 판매수량 순)";
+    body.innerHTML = list.map(function (x) {
+      var m = meta[x.it.m] || { pn: "", mk: "" }, it = x.it;
+      var gap = x.gap == null ? '<span class="pr-na">-</span>' : '<span class="' + (x.gap > 0 ? "pr-up" : "pr-down") + '">' + (x.gap > 0 ? "+" : "") + (x.gap * 100).toFixed(0) + "%</span>";
+      var seller = it.price ? (it.url ? '<a href="' + esc2(it.url) + '" target="_blank" rel="noopener" style="color:#3f5bd6;font-weight:600">' + esc2(it.seller) + "</a>" : esc2(it.seller)) : '<span class="pr-na">미확인</span>';
+      return "<tr><td class='t-left'><b>" + esc2(it.m) + "</b><div class='note' style='margin:0'>" + esc2(m.pn) + (m.mk ? " · " + esc2(m.mk) : "") + "</div></td><td data-l='판매수량'>" + fmtInt.format(Math.round(x.q)) + "</td><td data-l='우리 평균 판매가'>" + (x.our == null ? '<span class="pr-na">-</span>' : fmtWon(x.our)) + "</td><td data-l='온라인 최저가'>" + (it.price ? "<b>" + fmtWon(it.price) + "</b>" : '<span class="pr-na">미확인</span>') + "</td><td data-l='차이'>" + gap + "</td><td class='t-left' data-l='판매처'>" + seller + (it.flag ? '<span class="pr-flag">' + esc2(it.flag) + "</span>" : "") + "</td><td class='t-left' data-l='쇼핑몰 검색'>" + pLinks(pQuery(it.m)) + "</td></tr>";
+    }).join("");
+  }
+  (function () {
+    var inp = document.getElementById("prFindInput"); if (!inp) return;
+    var upd = function () { var q = inp.value.trim(); document.getElementById("prFindLinks").innerHTML = q ? pLinks(q) : '<span class="note">검색어를 입력하면 쇼핑몰 버튼이 나타납니다.</span>'; };
+    inp.addEventListener("input", upd); upd();
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { var q = inp.value.trim(); if (q) window.open("https://search.danawa.com/dsearch.php?query=" + encodeURIComponent(q), "_blank", "noopener"); } });
+    var pp = document.getElementById("prPeriod");
+    pp.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; prState.period = b.getAttribute("data-v"); Array.prototype.forEach.call(pp.querySelectorAll("button"), function (x) { x.classList.toggle("active", x === b); }); renderPrice(); });
+  })();
+
+  var srchState = { q: "", model: null, all: false };
+  var _srInch = {}, _srHay = {};
+  function srInch(r) { var k = r.m; if (!(k in _srInch)) _srInch[k] = extractInch(r.m, r.pn); return _srInch[k]; }
+  function srHay(r) { var k = r.m + "|" + r.mk + "|" + r.ic; if (!_srHay[k]) _srHay[k] = (r.m + " " + r.pn + " " + r.mk + " " + r.iname).toLowerCase().replace(/\s+/g, " "); return r.sub ? _srHay[k] + " 구독" : _srHay[k]; }
+  function srTok(tok, r, hay) {
+    var mm = tok.match(/^(\d{2,3})(인치|형|inch|")$/);
+    if (mm) return srInch(r) === parseInt(mm[1], 10);
+    if (/^\d{2,3}$/.test(tok) && srInch(r) === parseInt(tok, 10)) return true;
+    if (tok === "lg" || tok === "엘지") return hay.indexOf("엘지") >= 0;
+    return hay.indexOf(tok) >= 0;
+  }
+  function srPrice(m) {
+    var hit = null; PRICE.items.forEach(function (it) { if (it.m === m) hit = it; });
+    return (hit && hit.price ? "<b>" + fmtWon(hit.price) + "</b> <span class='note'>(" + PRICE.asof.slice(5).replace("-", "/") + ")</span><br>" : "") + pLinks(pQuery(m));
+  }
+  function renderSearch() {
+    var tilesEl = document.getElementById("srchTiles"); if (!tilesEl) return;
+    var q = srchState.q.trim().toLowerCase();
+    var show = function (id, on) { document.getElementById(id).style.display = on ? "" : "none"; };
+    if (!q) {
+      tilesEl.innerHTML = '<div class="card"><div class="srch-empty">찾고 싶은 <b>모델·인치·메이커</b>를 입력하세요.<br>예) <b>85인치 TV</b> → 85인치 TV테크날러지(아남·인켈 등) 판매 대수와 지점별 내역</div></div>';
+      show("srchModelCard", false); show("srchStoreCard", false); show("srchGrid", false);
+      document.getElementById("srchScope").textContent = ""; return;
+    }
+    var toks = q.split(/\s+/);
+    var rows = filteredData().filter(function (r) { var h = srHay(r); for (var i = 0; i < toks.length; i++) if (!srTok(toks[i], r, h)) return false; return true; });
+    document.getElementById("srchScope").innerHTML = "현재 기간: <b>" + esc2(periodLabel()) + "</b>";
+    var tot = { q: 0, rev: 0, profit: 0 }, byM = {}, byS = {}, byYm = {}, byDet = {};
+    var selM = srchState.model;
+    rows.forEach(function (r) {
+      tot.q += r.q; tot.rev += r.rev; tot.profit += r.profit;
+      var a = byM[r.m] || (byM[r.m] = { m: r.m, pn: r.pn, mk: r.mk, inch: srInch(r), q: 0, rev: 0 }); a.q += r.q; a.rev += r.rev;
+      if (selM && r.m !== selM) return;
+      var s2 = byS[r.sn] || (byS[r.sn] = { sn: r.sn, bn: r.bn, q: 0, rev: 0 }); s2.q += r.q; s2.rev += r.rev;
+      var y = byYm[r.ym] || (byYm[r.ym] = { q: 0, rev: 0 }); y.q += r.q; y.rev += r.rev;
+      var dk = r.d + "|" + r.sn + "|" + r.m; var dd = byDet[dk] || (byDet[dk] = { d: r.d, sn: r.sn, m: r.m, q: 0 }); dd.q += r.q;
+    });
+    var models = Object.keys(byM).map(function (k) { return byM[k]; }).sort(function (a, b) { return b.q - a.q; });
+    if (selM && !byM[selM]) { srchState.model = selM = null; }
+    var stores = Object.keys(byS).map(function (k) { return byS[k]; }).filter(function (x) { return x.q !== 0 || x.rev !== 0; }).sort(function (a, b) { return b.q - a.q; });
+    var sq = stores.reduce(function (t, x) { return t + x.q; }, 0), sr = stores.reduce(function (t, x) { return t + x.rev; }, 0);
+    if (!rows.length) {
+      tilesEl.innerHTML = '<div class="card"><div class="srch-empty"><b>' + esc2(srchState.q) + '</b> 에 해당하는 판매가 없습니다.<br>검색어를 줄이거나 위쪽 필터(월·메이커·지부·지점)를 확인해 보세요.</div></div>';
+      show("srchModelCard", false); show("srchStoreCard", false); show("srchGrid", false); return;
+    }
+    var tiles = [
+      { c: "#4f6df5", l: "판매수량", v: fmtInt.format(Math.round(tot.q)) + "<small>대</small>", s: "검색어 <b>" + esc2(srchState.q.trim()) + "</b> · " + esc2(periodLabel()) },
+      { c: "#18a68b", l: "매출액", v: fmtM(tot.rev) + "<small>백만원</small>", s: "이익 <b>" + fmtM(tot.profit) + "백만원</b>" },
+      { c: "#f1924f", l: "판매한 지점", v: fmtInt.format(Object.keys(byS).filter(function (k) { return byS[k].q > 0; }).length) + "<small>곳</small>", s: "1위 " + (stores.length ? "<b>" + esc2(stores[0].sn) + "</b> " + fmtInt.format(Math.round(stores[0].q)) + "대" : "-") },
+      { c: "#9a73e6", l: "해당 모델", v: fmtInt.format(models.length) + "<small>개</small>", s: models.length ? "1위 <b>" + esc2(models[0].m) + "</b> " + fmtInt.format(Math.round(models[0].q)) + "대" : "" }
+    ];
+    tilesEl.innerHTML = '<div class="insights">' + tiles.map(function (t) { return '<div class="insight" style="--c:' + t.c + '"><div class="i-label"><i></i>' + t.l + '</div><div class="i-value">' + t.v + '</div><div class="i-sub">' + t.s + "</div></div>"; }).join("") + "</div>";
+
+    show("srchModelCard", true);
+    document.getElementById("srchModelBody").innerHTML = models.slice(0, 60).map(function (m) {
+      return "<tr data-m=\"" + esc2(m.m) + "\"" + (selM === m.m ? " class='ux-row-sel'" : "") + "><td class='t-left'><b>" + esc2(m.m) + "</b></td><td class='t-left'>" + esc2(m.pn) + "</td><td class='t-left'>" + esc2(m.mk) + "</td><td>" + (m.inch ? m.inch + "형" : "-") + "</td><td><b>" + fmtInt.format(Math.round(m.q)) + "</b></td><td>" + fmtM(m.rev) + "</td><td class='t-left' onclick='event.stopPropagation()'>" + srPrice(m.m) + "</td></tr>";
+    }).join("");
+    document.getElementById("srchModelNote").textContent = (models.length > 60 ? "상위 60개 모델 · " : "") + "행을 누르면 그 모델만 지점별로 볼 수 있습니다";
+
+    show("srchStoreCard", true);
+    document.getElementById("srchStoreTitle").innerHTML = "지점별 판매" + (selM ? " · " + esc2(selM) : "");
+    document.getElementById("srchStoreNote").innerHTML = (selM ? "선택 모델 <button type='button' class='srch-sel' id='srchSelClear' style='border:0;cursor:pointer'>" + esc2(selM) + " <span style='background:#4f6df5;color:#fff;border-radius:99px;padding:0 6px'>✕</span></button> · " : "") + "합계 <b>" + fmtInt.format(Math.round(sq)) + "대</b> · 판매 지점 " + stores.filter(function (x) { return x.q > 0; }).length + "곳";
+    var LIM = 20, shown = srchState.all ? stores : stores.slice(0, LIM), maxQ = Math.max.apply(null, stores.map(function (x) { return x.q; }).concat([1]));
+    document.getElementById("srchStoreBody").innerHTML = shown.map(function (x) {
+      return "<tr><td class='t-left'><b>" + esc2(x.sn) + "</b></td><td class='t-left'>" + esc2(x.bn) + "</td><td><b>" + fmtInt.format(Math.round(x.q)) + "</b></td><td class='t-left'><span class='srch-bar' style='width:" + Math.max(Math.round(Math.max(x.q, 0) / maxQ * 70), x.q > 0 ? 2 : 0) + "px'></span>" + (sq > 0 ? (x.q / sq * 100).toFixed(0) + "%" : "-") + "</td><td>" + fmtM(x.rev) + "</td></tr>";
+    }).join("");
+    var more = document.getElementById("srchStoreMore");
+    if (stores.length > LIM) { more.style.display = ""; more.textContent = srchState.all ? "상위 " + LIM + "개만 보기" : "전체 " + stores.length + "개 지점 보기"; } else more.style.display = "none";
+
+    show("srchGrid", true);
+    document.getElementById("srchMonthBody").innerHTML = Object.keys(byYm).sort().map(function (k) { return "<tr><td class='t-left'><b>" + esc2(monthLabel(k)) + "</b></td><td>" + fmtInt.format(Math.round(byYm[k].q)) + "</td><td>" + fmtM(byYm[k].rev) + "</td></tr>"; }).join("");
+    var det = Object.keys(byDet).map(function (k) { return byDet[k]; }).filter(function (x) { return x.q !== 0; }).sort(function (a, b) { return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
+    document.getElementById("srchDetailNote").textContent = "일자·지점·모델별 (최신순" + (det.length > 150 ? ", 최근 150건" : "") + ") · 음수는 취소·정정";
+    document.getElementById("srchDetailBody").innerHTML = det.slice(0, 150).map(function (x) { return "<tr><td class='t-left'>" + x.d.slice(5).replace("-", "/") + "</td><td class='t-left'>" + esc2(x.sn) + "</td><td class='t-left'>" + esc2(x.m) + "</td><td>" + fmtInt.format(Math.round(x.q)) + "</td></tr>"; }).join("");
+  }
+  (function () {
+    var inp = document.getElementById("srchInput"); if (!inp) return;
+    var t;
+    inp.addEventListener("input", function () { clearTimeout(t); t = setTimeout(function () { srchState.q = inp.value; srchState.model = null; srchState.all = false; renderSearch(); }, 120); });
+    document.getElementById("srchClear").addEventListener("click", function () { inp.value = ""; srchState.q = ""; srchState.model = null; renderSearch(); inp.focus(); });
+    document.getElementById("srchChips").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; inp.value = b.textContent; srchState.q = inp.value; srchState.model = null; srchState.all = false; renderSearch(); });
+    document.getElementById("srchModelBody").addEventListener("click", function (e) { var tr = e.target.closest("tr"); if (!tr) return; var m = tr.getAttribute("data-m"); srchState.model = srchState.model === m ? null : m; srchState.all = false; renderSearch(); });
+    document.getElementById("srchStoreMore").addEventListener("click", function () { srchState.all = !srchState.all; renderSearch(); });
+    document.getElementById("srchStoreNote").addEventListener("click", function (e) { if (e.target.closest("#srchSelClear")) { srchState.model = null; renderSearch(); } });
+  })();
+
+  function updateFbSummary() {
+    var el = document.getElementById("fbSummary"); if (!el) return;
+    var txt = function (id) { var x = document.getElementById(id); if (!x) return ""; if (x.tagName === "SELECT") return x.selectedIndex >= 0 ? x.options[x.selectedIndex].text : ""; return x.textContent || ""; };
+    var parts = [txt("monthBtnText")];
+    ["makerSelect", "hqSelect", "branchSelect", "storeSelect"].forEach(function (id) { var t = txt(id).trim(); if (t && t.indexOf("전체") !== 0) parts.push(t); });
+    parts.push(state.metric === "q" ? "판매수량" : "매출액");
+    el.textContent = parts.join(" · ");
+  }
+  (function () {
+    var fb = document.getElementById("filterBar"), bt = document.getElementById("fbToggle"); if (!fb || !bt) return;
+    bt.addEventListener("click", function () { var c = fb.classList.toggle("fb-closed"); bt.setAttribute("aria-expanded", c ? "false" : "true"); });
+    if (!(window.matchMedia && window.matchMedia("(max-width:640px)").matches)) fb.classList.remove("fb-closed");
+  })();
+  function __safe(f){ try { f(); } catch (e) { if (window.console) console.warn("빈 데이터:", e && e.stack); } }
+  function render() {
+    updateFbSummary();
+    var data = filteredData();
+    var pyData = filteredPYData();
+    __safe(function(){ renderSubtitle(data); });
+    __safe(function(){ renderKPI(data, pyData); });
+    __safe(function(){ renderInsights(data, pyData); });
+    __safe(function(){ renderTrend(data, pyData); });
+    __safe(function(){ renderWeekday(data); });
+    __safe(function(){ renderModels(data); });
+    __safe(function(){ renderModelTable(data); });
+    __safe(function(){ renderItems(data, pyData); });
+    __safe(function(){ renderBrands(data, pyData); });
+    __safe(function(){ updateSegTabView(); }); // SEG별/스펙별/인치별 중 지금 보이는 탭만 다시 그립니다(탭 전환 시 나머지도 갱신)
+    __safe(function(){ renderSubTrend(); }); // 엘지구독 구성 추이 — 자체적으로 항상 전체 기간 집계이므로 filteredData()를 쓰지 않고 자체 필터링합니다
+    __safe(function(){ renderOrg(data, pyData); });
+    __safe(function(){ renderMonthly(); });
+    __safe(function(){ renderSingle(); });
+    __safe(function(){ renderSearch(); });
+    __safe(function(){ renderPrice(); });
+  }
+
+  refreshBranchOptions();
+  refreshStoreOptions();
+  __safe(renderFootnote);
+  render();
+  (function () { var t, lw = window.innerWidth; window.addEventListener("resize", function () { if (window.innerWidth === lw && !window.__fr) return; window.__fr = 0; lw = window.innerWidth; clearTimeout(t); t = setTimeout(render, 150); }); })();
+})();
+</script>
+
+<script>(function(){
+'use strict';
+const sale=!!document.getElementById('trendChart');
+const defs=sale?[
+['▦','개요','screenOverview','선택한 조건의 핵심 지표와 주요 인사이트'],['⌕','상품 검색','screenSearch','모델·인치·메이커로 찾아 지점별 판매 대수 확인'],['₩','온라인 최저가','screenPrice','주요 모델 온라인 최저가와 우리 평균 판매가 비교 · 쇼핑몰 검색'],['▥','일별 판매 추이','screenTrend','기간별 판매 흐름과 요일별 패턴'],['▤','모델별 판매 순위','screenModel','모델 TOP 5 순위와 TOP 20 상세 실적'],['◉','품목 · 브랜드 비중','screenMix','품목 구성비와 삼성·엘지·기타 시장점유(MS), 전년동기 대비'],['▥','SEG · 스펙 비교','segCompareChart','등급·스펙·인치별 삼성·엘지 비교'],['↗','LG 구독 추이','subTrendChart','엘지구독의 라이프스타일 vs LED 월별 비중'],['▧','지부 · 지점 실적','screenOrg','지부별 실적과 지점 TOP 15, 전년동기 대비'],['▤','월별 요약','screenMonth','월별 수량·매출·이익과 전년동기 증감 한눈에'],['◫','단품 판매 현황','screenSingle','삼성 TV(100·226) 전표 기준 단품 vs 다품목, 인치별'],['ⓘ','참고 자료','screenRef','데이터 범위 · 집계 기준 · 분류 기준 안내']
+]:[
+['▦','재고 요약','screenDashboard'],['▥','재고 추이','trendTotal'],['◉','브랜드 비교','brandVendorSelect'],['▤','본부별 현황','yoyStoreMetricBtnAmt'],['⌕','매장 상세','screenStoreDetail'],['▤','모델별 재고','sdModelTable']
+];
+const targetNav=document.querySelector(sale?'.wrap':'.shell');
+if(!targetNav)return;
+document.body.classList.add('ux-layout');
+const side=document.createElement('aside');side.className='ux-sidebar';side.setAttribute('aria-label','대시보드 메뉴');
+side.innerHTML='<div class="ux-logo"><div class="ux-logo-badge">◈</div><strong>'+ (sale?'SALES INSIGHT':'INVENTORY FLOW') +'</strong><small>BUSINESS INTELLIGENCE / 2026</small></div><div class="ux-nav-label">ANALYTICS</div><nav class="ux-nav"></nav><div class="ux-bottom"><button type="button" class="ux-btn" id="uxCompact">▤ 밀도 높이기</button><button type="button" class="ux-btn" id="uxFocus">⛶ 전체 화면 모드</button><button type="button" class="ux-btn" onclick="window.print()">⎙ 인쇄 · PDF</button><div class="ux-small">Dashboard Workspace · v3.0</div></div>';
+document.body.insertBefore(side,document.body.firstChild);
+const menu=side.querySelector('.ux-nav');
+const unitOf=id=>{const el=document.getElementById(id);return !el?null:(el.closest('.ux-screen')||el.closest('.card')||el);};
+function showScreen(id){
+ const units=defs.map(d=>unitOf(d[2])).filter(Boolean);
+ const cur=unitOf(id);
+ units.forEach(u=>u.classList.toggle('ux-hide',u!==cur));
+ const dd=defs.find(x=>x[2]===id),hd=document.getElementById('uxScreenHead');if(hd&&dd)hd.innerHTML='<span class="ux-sh-ico">'+dd[0]+'</span><div><h2>'+dd[1]+'</h2><p>'+(dd[3]||'')+'</p></div>';
+ window.scrollTo({top:0});document.body.classList.toggle('ux-nofilter',id==='screenSingle'||id==='screenRef');
+ window.__fr=1;window.dispatchEvent(new Event('resize'));
+}
+if(sale){document.body.classList.add('ux-single');}
+
+defs.forEach(([ico,label,id],i)=>{
+ const a=document.createElement('a');a.className='ux-link'+(i===0?' ux-active':'');a.href='#'+id;a.innerHTML='<span class="ux-ico">'+ico+'</span><span>'+label+'</span>';
+ a.addEventListener('click',e=>{
+  const target=document.getElementById(id);if(!target)return;
+  e.preventDefault();
+  if(!sale){
+   if(id==='screenStoreDetail'||id==='sdModelTable')document.getElementById('screenBtnStoreDetail')?.click();
+   else document.getElementById('screenBtnDashboard')?.click();
+  }
+  if(sale){showScreen(id);}else{setTimeout(()=>{target.scrollIntoView({behavior:'smooth',block:'start'});},50);}
+  menu.querySelectorAll('.ux-link').forEach(x=>x.classList.remove('ux-active'));a.classList.add('ux-active');
+  document.body.classList.remove('ux-menu-open');
+ });menu.appendChild(a);
+});
+const shade=document.createElement('div');shade.className='ux-mobile-shade';shade.onclick=()=>document.body.classList.remove('ux-menu-open');document.body.appendChild(shade);
+const mob=document.createElement('button');mob.className='ux-mobile-toggle';mob.textContent='☰ 메뉴';mob.onclick=()=>document.body.classList.toggle('ux-menu-open');document.body.appendChild(mob);
+const fab=document.createElement('button');fab.className='ux-fab';fab.textContent='↑ 맨 위로';fab.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.body.appendChild(fab);
+side.querySelector('#uxCompact').onclick=function(){let on=document.body.classList.toggle('ux-compact');this.textContent=on?'▤ 여유 있게 보기':'▤ 밀도 높이기';try{localStorage.setItem('ux-compact',on?'1':'0')}catch(e){}};
+side.querySelector('#uxFocus').onclick=function(){let on=document.body.classList.toggle('ux-focus');this.textContent=on?'⛶ 메뉴 펼치기':'⛶ 전체 화면 모드';};
+try{if(localStorage.getItem('ux-compact')==='1'){document.body.classList.add('ux-compact');side.querySelector('#uxCompact').textContent='▤ 여유 있게 보기'}}catch(e){}
+if(sale){showScreen(defs[0][2]);}
+const info=document.createElement('div');info.className='ux-info';info.innerHTML='<span>✦</span><span><b>화면 전환</b> · 왼쪽 메뉴에서 항목을 고르면 해당 화면만 표시됩니다. 보기 밀도와 전체 화면 모드도 전환할 수 있습니다.</span><button class="ux-close" aria-label="안내 닫기">×</button>';info.querySelector('button').onclick=()=>info.remove();targetNav.insertBefore(info,targetNav.firstChild);
+})();</script><script>(function(){
+'use strict';
+var SEARCH_SVG='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4"/></svg>';
+var CHK_SVG='<svg class="ux-chk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+var CHO='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+function choseong(s){var o='';for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);if(c>=0xAC00&&c<=0xD7A3)o+=CHO[Math.floor((c-0xAC00)/588)];else o+=s[i];}return o;}
+function isJamoOnly(q){return /^[ㄱ-ㅎ]+$/.test(q);}
+function esc(t){return t.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+var openCombo=null;
+function closeOpen(){if(openCombo){openCombo.close();}}
+function enhance(sel){
+  if(sel.dataset.uxCombo)return;sel.dataset.uxCombo='1';
+  var wrap=document.createElement('span');wrap.className='ux-combo';
+  var mw=parseFloat(getComputedStyle(sel).minWidth);if(mw>0)wrap.style.minWidth=mw+'px';
+  sel.parentNode.insertBefore(wrap,sel);
+  var btn=document.createElement('button');btn.type='button';btn.className='ux-combo-btn';btn.setAttribute('aria-haspopup','listbox');btn.setAttribute('aria-expanded','false');
+  var lab=document.createElement('span');lab.className='ux-combo-label';
+  btn.appendChild(lab);btn.insertAdjacentHTML('beforeend','<span class="ux-combo-ico">'+SEARCH_SVG+'</span>');
+  wrap.appendChild(btn);wrap.appendChild(sel);
+  sel.classList.add('ux-native');sel.tabIndex=-1;sel.setAttribute('aria-hidden','true');
+  var pop=null,input,list,count,items=[],hl=-1;
+  function sync(){
+    var o=sel.options[sel.selectedIndex];lab.textContent=o?o.textContent:'';
+    btn.disabled=sel.disabled;
+    var id=sel.id&&document.querySelector('label[for="'+sel.id+'"]');if(id)btn.setAttribute('aria-label',id.textContent+': '+lab.textContent);
+  }
+  function build(q){
+    q=(q||'').trim().toLowerCase();
+    var opts=Array.prototype.slice.call(sel.options);
+    var jam=isJamoOnly(q);
+    items=opts.map(function(o,i){return {o:o,i:i,t:o.textContent};}).filter(function(x){
+      if(!q)return true;var t=x.t.toLowerCase();
+      return t.indexOf(q)>-1||(jam&&choseong(x.t).indexOf(q)>-1);
+    });
+    list.innerHTML='';
+    if(!items.length){list.innerHTML='<li class="ux-pop-empty">일치하는 항목이 없습니다</li>';}
+    items.forEach(function(x,k){
+      var li=document.createElement('li');li.className='ux-pop-item'+(x.i===sel.selectedIndex?' ux-sel':'');li.setAttribute('role','option');li.dataset.k=k;
+      var txt=esc(x.t);
+      if(q&&!jam){var p=x.t.toLowerCase().indexOf(q);if(p>-1)txt=esc(x.t.slice(0,p))+'<mark>'+esc(x.t.slice(p,p+q.length))+'</mark>'+esc(x.t.slice(p+q.length));}
+      li.innerHTML='<span>'+txt+'</span>'+CHK_SVG;
+      li.addEventListener('mousedown',function(e){e.preventDefault();});
+      li.addEventListener('click',function(){choose(k);});
+      li.addEventListener('mousemove',function(){setHl(k,false);});
+      list.appendChild(li);
+    });
+    count.textContent=items.length+'/'+opts.length;
+    var s=items.findIndex(function(x){return x.i===sel.selectedIndex;});
+    setHl(q?0:(s>-1?s:0),true);
+  }
+  function setHl(k,scroll){
+    var nodes=list.querySelectorAll('.ux-pop-item');if(!nodes.length){hl=-1;return;}
+    k=Math.max(0,Math.min(nodes.length-1,k));
+    if(hl>-1&&nodes[hl])nodes[hl].classList.remove('ux-hl');
+    hl=k;nodes[k].classList.add('ux-hl');
+    if(scroll)nodes[k].scrollIntoView({block:'nearest'});
+  }
+  function choose(k){
+    var x=items[k];if(!x)return;
+    var changed=sel.selectedIndex!==x.i;
+    sel.selectedIndex=x.i;
+    if(changed)sel.dispatchEvent(new Event('change',{bubbles:true}));
+    sync();api.close();btn.focus();
+  }
+  function place(){
+    var r=btn.getBoundingClientRect();
+    var w=Math.max(r.width,240);pop.style.width=w+'px';
+    var left=Math.min(r.left,window.innerWidth-w-10);pop.style.left=Math.max(10,left)+'px';
+    var h=pop.offsetHeight,below=window.innerHeight-r.bottom-10,above=r.top-10;
+    if(h>below&&above>below){pop.style.top='auto';pop.style.bottom=(window.innerHeight-r.top+6)+'px';list.style.maxHeight=Math.min(280,above-60)+'px';}
+    else{pop.style.bottom='auto';pop.style.top=(r.bottom+6)+'px';list.style.maxHeight=Math.max(140,Math.min(280,below-60))+'px';}
+  }
+  var api={
+    open:function(){
+      if(btn.disabled)return;closeOpen();
+      pop=document.createElement('div');pop.className='ux-pop';pop.setAttribute('role','listbox');
+      pop.innerHTML='<div class="ux-pop-search">'+SEARCH_SVG+'<input type="text" placeholder="검색어를 입력하세요 (초성 검색 가능)" autocomplete="off" spellcheck="false"><span class="ux-pop-count"></span></div><ul class="ux-pop-list"></ul>';
+      input=pop.querySelector('input');list=pop.querySelector('ul');count=pop.querySelector('.ux-pop-count');
+      document.body.appendChild(pop);build('');place();
+      wrap.classList.add('ux-open');btn.setAttribute('aria-expanded','true');openCombo=api;
+      input.focus();
+      input.addEventListener('input',function(){build(input.value);place();});
+      input.addEventListener('keydown',function(e){
+        if(e.key==='ArrowDown'){e.preventDefault();setHl(hl+1,true);}
+        else if(e.key==='ArrowUp'){e.preventDefault();setHl(hl-1,true);}
+        else if(e.key==='Enter'){e.preventDefault();if(hl>-1)choose(hl);}
+        else if(e.key==='Escape'){e.preventDefault();api.close();btn.focus();}
+        else if(e.key==='Tab'){api.close();}
+      });
+    },
+    close:function(){
+      if(!pop)return;pop.remove();pop=null;wrap.classList.remove('ux-open');btn.setAttribute('aria-expanded','false');if(openCombo===api)openCombo=null;
+    },
+    reposition:function(){if(pop)place();}
+  };
+  btn.addEventListener('click',function(){pop?api.close():api.open();});
+  btn.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();api.open();}});
+  sel.addEventListener('change',sync);
+  new MutationObserver(sync).observe(sel,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled']});
+  sel._uxSync=sync;sync();
+}
+document.addEventListener('mousedown',function(e){if(openCombo&&!e.target.closest('.ux-pop')&&!e.target.closest('.ux-combo'))closeOpen();});
+window.addEventListener('scroll',function(e){if(openCombo&&!(e.target.closest&&e.target.closest('.ux-pop')))openCombo.reposition();},true);
+window.addEventListener('resize',function(){if(openCombo)openCombo.reposition();});
+document.querySelectorAll('select').forEach(enhance);
+
+setInterval(function(){document.querySelectorAll('select.ux-native').forEach(function(s){if(s._uxSync)s._uxSync();});},800);
+})();</script>
+
+</body></html>
